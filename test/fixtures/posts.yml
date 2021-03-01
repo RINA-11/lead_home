@@ -1,25 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  user: one
-  purpose: one
-  pet_category: one
-  city: one
-  pet_sex: one
-  image: one
+  references: 
+  references: 
+  references: 
+  references: 
+  references: 
+  references: 
   pet_breed: MyString
-  address_line: MyText
-  happened_at: 2021-02-28 06:22:03
-  content: MyText
+  address_line: MyString
+  happened_at: 2021-03-01 06:40:20
+  content: MyString
 
 two:
-  user: two
-  purpose: two
-  pet_category: two
-  city: two
-  pet_sex: two
-  image: two
+  references: 
+  references: 
+  references: 
+  references: 
+  references: 
+  references: 
   pet_breed: MyString
-  address_line: MyText
-  happened_at: 2021-02-28 06:22:03
-  content: MyText
+  address_line: MyString
+  happened_at: 2021-03-01 06:40:20
+  content: MyString
