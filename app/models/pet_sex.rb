@@ -1,2 +1,0 @@
-class PetSex < ApplicationRecord
-end

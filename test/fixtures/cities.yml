@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  prefecture_id: 1
+  prefecture: one
   name: MyString
 
 two:
-  prefecture_id: 1
+  prefecture: two
   name: MyString

@@ -1,2 +1,0 @@
-class PetCategory < ApplicationRecord
-end
