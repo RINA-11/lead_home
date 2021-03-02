@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  purpose: one
+  pet_category: one
+  city: one
+  pet_sex: one
+  pet_breed: MyString
+  address_line: MyString
+  happened_at: 2021-03-02 02:26:59
+  content: MyText
+
+two:
+  user: two
+  purpose: two
+  pet_category: two
+  city: two
+  pet_sex: two
+  pet_breed: MyString
+  address_line: MyString
+  happened_at: 2021-03-02 02:26:59
+  content: MyText

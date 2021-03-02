@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_002309) do
+ActiveRecord::Schema.define(version: 2021_03_02_025232) do
 
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "prefecture_id", null: false
@@ -18,6 +18,33 @@ ActiveRecord::Schema.define(version: 2021_03_02_002309) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prefecture_id"], name: "index_cities_on_prefecture_id"
+  end
+
+  create_table "clips", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_clips_on_post_id"
+    t.index ["user_id"], name: "index_clips_on_user_id"
+  end
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.text "post_image", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_images_on_post_id"
+  end
+
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_messages_on_post_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "pet_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -30,6 +57,25 @@ ActiveRecord::Schema.define(version: 2021_03_02_002309) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "purpose_id", null: false
+    t.bigint "pet_category_id", null: false
+    t.bigint "city_id", null: false
+    t.bigint "pet_sex_id", null: false
+    t.string "pet_breed"
+    t.string "address_line"
+    t.datetime "happened_at", null: false
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_posts_on_city_id"
+    t.index ["pet_category_id"], name: "index_posts_on_pet_category_id"
+    t.index ["pet_sex_id"], name: "index_posts_on_pet_sex_id"
+    t.index ["purpose_id"], name: "index_posts_on_purpose_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "prefectures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -53,4 +99,14 @@ ActiveRecord::Schema.define(version: 2021_03_02_002309) do
   end
 
   add_foreign_key "cities", "prefectures"
+  add_foreign_key "clips", "posts"
+  add_foreign_key "clips", "users"
+  add_foreign_key "images", "posts"
+  add_foreign_key "messages", "posts"
+  add_foreign_key "messages", "users"
+  add_foreign_key "posts", "cities"
+  add_foreign_key "posts", "pet_categories"
+  add_foreign_key "posts", "pet_sexes"
+  add_foreign_key "posts", "purposes"
+  add_foreign_key "posts", "users"
 end

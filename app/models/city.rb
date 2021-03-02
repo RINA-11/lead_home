@@ -4,5 +4,6 @@ class City < ApplicationRecord
   validates :name, prefecture: true
   
   belongs_to :prefecture
+  belongs_to :post
   
 end
