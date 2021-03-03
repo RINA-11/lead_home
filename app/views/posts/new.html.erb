@@ -1,0 +1,82 @@
+<div class="posts-new-wrapper">
+  <div class="container">
+    <%= form_with model: @post do |f| %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>
+            投稿の種類
+          </th>
+          <td>
+            <div class="form-group">
+              <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, class: "form-control" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            日時
+          </th>
+          <td>
+            <div class="form-group">
+              <%= f.datetime_field :happened_at, class: "form-control" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            都道府県・市区町村・以降
+          </th>
+          <td>
+            <div class="form-group">
+              <%= f.collection_select :city_id, @cities, :id, :name, { prompt: "選択してください" }, { class: "form-control" } %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            ペットカテゴリー
+          </th>
+          <td>
+            <div class="form-group">
+              <%= f.collection_select :pet_category_id, @pet_categories, :id, :name, { prompt: "選択してください" }, { class: "form-control" } %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            品種
+          </th>
+          <td>
+            <div class="form-group">
+              <%= f.text_field :pet_breed, class:"form-control" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            性別
+          </th>
+          <td>
+            <div class="form-group">
+              <%= f.collection_radio_buttons :pet_sex_id, @pet_sexes, :id, :name, class: "form-control" %>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            コメント
+          </th>
+          <td>
+            <div class="form-group">
+              <%= f.text_area :content, class:"form-control" %>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <%= f.submit "投稿" %>
+    <% end %>
+    
+  </div>
+</div>
