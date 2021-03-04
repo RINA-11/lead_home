@@ -34,8 +34,7 @@
             </div>
             <div class="form-group">
               <%= f.label :city_id, "市区町村" %>
-              <%#<%= f.collection_select :city_id, @cities, :id, :name, { prompt: "選択してください" }, { class: "form-control", data: { id: "a" } } %>
-              <%= f.collection_select :city_id, options_for_select(@cities.map{|c|[c[:name], c[:id], {"data-id"=>c[:id]}]}), {}, {class: "form-control", id: :city_id} %>
+              <%= f.select :city_id, options_for_select(@cities.map { |c|[c[:name], c[:id], { "data-id" => c[:prefecture_id] }] }), { prompt: "選択してください" }, { class: "form-control", id: :city_id } %>
             </div>
             <div class="form-group">
               <%= f.label :address_line, "その他" %>
@@ -90,3 +89,18 @@
     
   </div>
 </div>
+
+<%#
+<script>
+    /*global $*/
+// まずBを非表示にする
+$('#city_id > option[data-id]').wrap('<span>');
+ 
+$('#post_prefecture_id').change(function () {
+  // Aが変更されるときに一度非表示にする
+  $('#city_id > option[data-id]').wrap('<span>');
+  // Aのvalueに対応するBのdata-idのoptionを表示する
+  $("#city_id option[data-id='"+ $('#post_prefecture_id').val() +"']").unwrap();
+});
+</script>
+%>
