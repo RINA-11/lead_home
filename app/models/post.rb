@@ -3,6 +3,7 @@ class Post < ApplicationRecord
   validates :user_id, presence: true
   validates :purpose_id, presence: true
   validates :pet_category_id, presence: true
+  validates :prefecture_id, presence: true
   validates :city_id, presence: true
   validates :pet_sex_id, presence: true
   validates :pet_breed, length: { maximum: 50 }
@@ -14,6 +15,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :purpose
   has_one :pet_category
+  has_one :prefecture
   has_one :city
   has_one :pet_sex
   has_one :purpose

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_02_025232) do
+ActiveRecord::Schema.define(version: 2021_03_03_153844) do
 
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "prefecture_id", null: false
@@ -71,9 +71,11 @@ ActiveRecord::Schema.define(version: 2021_03_02_025232) do
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "prefecture_id", null: false
     t.index ["city_id"], name: "index_posts_on_city_id"
     t.index ["pet_category_id"], name: "index_posts_on_pet_category_id"
     t.index ["pet_sex_id"], name: "index_posts_on_pet_sex_id"
+    t.index ["prefecture_id"], name: "index_posts_on_prefecture_id"
     t.index ["purpose_id"], name: "index_posts_on_purpose_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
@@ -107,6 +109,7 @@ ActiveRecord::Schema.define(version: 2021_03_02_025232) do
   add_foreign_key "posts", "cities"
   add_foreign_key "posts", "pet_categories"
   add_foreign_key "posts", "pet_sexes"
+  add_foreign_key "posts", "prefectures"
   add_foreign_key "posts", "purposes"
   add_foreign_key "posts", "users"
 end

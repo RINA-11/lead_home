@@ -8,8 +8,8 @@
             投稿の種類
           </th>
           <td>
-            <div class="form-group">
-              <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, class: "form-control" %>
+            <div class="form-check form-check-inline">
+              <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, class: "form-check-input " %>
             </div>
           </td>
         </tr>
@@ -25,11 +25,20 @@
         </tr>
         <tr>
           <th>
-            都道府県・市区町村・以降
+            場所
           </th>
           <td>
             <div class="form-group">
+              <%= f.label :prefecture_id, "都道府県" %>
+              <%= f.collection_select :prefecture_id, @prefectures, :id, :name, { prompt: "選択してください" }, { class: "form-control" } %>
+            </div>
+            <div class="form-group">
+              <%= f.label :city_id, "市区町村" %>
               <%= f.collection_select :city_id, @cities, :id, :name, { prompt: "選択してください" }, { class: "form-control" } %>
+            </div>
+            <div class="form-group">
+              <%= f.label :address_line, "その他" %>
+              <%= f.text_field :address_line, class:"form-control" %>
             </div>
           </td>
         </tr>
@@ -58,8 +67,8 @@
             性別
           </th>
           <td>
-            <div class="form-group">
-              <%= f.collection_radio_buttons :pet_sex_id, @pet_sexes, :id, :name, class: "form-control" %>
+            <div class="form-check form-check-inline">
+              <%= f.collection_radio_buttons :pet_sex_id, @pet_sexes, :id, :name, class: "form-check-input" %>
             </div>
           </td>
         </tr>
