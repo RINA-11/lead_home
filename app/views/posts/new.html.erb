@@ -1,106 +1,110 @@
 <div class="posts-new-wrapper">
   <div class="container">
     <%= form_with model: @post do |f| %>
-    <table class="table">
-      <tbody>
-        <tr>
-          <th>
-            投稿の種類
-          </th>
-          <td>
-            <div class="form-check form-check-inline">
-              <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, class: "form-check-input " %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            日時
-          </th>
-          <td>
-            <div class="form-group">
-              <%= f.datetime_field :happened_at, class: "form-control" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            場所
-          </th>
-          <td>
-            <div class="form-group">
-              <%= f.label :prefecture_id, "都道府県" %>
-              <%= f.collection_select :prefecture_id, @prefectures, :id, :name, { prompt: "選択してください" }, { class: "form-control" } %>
-            </div>
-            <div class="form-group">
-              <%= f.label :city_id, "市区町村" %>
-              <%= f.select :city_id, options_for_select(@cities.map { |c|[c[:name], c[:id], { "data-id" => c[:prefecture_id] }] }), { prompt: "選択してください" }, { class: "form-control", id: :city_id } %>
-            </div>
-            <div class="form-group">
-              <%= f.label :address_line, "その他" %>
-              <%= f.text_field :address_line, class:"form-control" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            ペットカテゴリー
-          </th>
-          <td>
-            <div class="form-group">
-              <%= f.collection_select :pet_category_id, @pet_categories, :id, :name, { prompt: "選択してください" }, { class: "form-control" } %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            品種
-          </th>
-          <td>
-            <div class="form-group">
-              <%= f.text_field :pet_breed, class:"form-control" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            性別
-          </th>
-          <td>
-            <div class="form-check form-check-inline">
-              <%= f.collection_radio_buttons :pet_sex_id, @pet_sexes, :id, :name, class: "form-check-input" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            コメント
-          </th>
-          <td>
-            <div class="form-group">
-              <%= f.text_area :content, class:"form-control" %>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <%= f.submit "投稿" %>
+      <%= f.fields_for :images do |i| %>
+        <div class="form-group">
+          <%= i.label :post_image, "画像 ※" %>
+          <%= i.file_field :post_image, multiple: true %>
+        </div>
+      <% end %>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>
+              投稿の種類<span> ※</span>
+            </th>
+            <td>
+              <div class="form-check form-check-inline">
+                <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, class: "form-check-input " %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              日時<span> ※</span>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.datetime_field :happened_at, class: "form-control" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              場所<span> ※</span>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.label :prefecture_id, "都道府県 ※" %>
+                <%= f.collection_select :prefecture_id, @prefectures, :id, :name, { prompt: "選択してください" }, { class: "form-control" } %>
+              </div>
+              <div class="form-group">
+                <%= f.label :city_id, "市区町村 ※" %>
+                <%= f.select :city_id, options_for_select(@cities.map { |c|[c[:name], c[:id], { "data-id" => c[:prefecture_id] }] }), { prompt: "選択してください" }, { class: "form-control", id: :city_id } %>
+              </div>
+              <div class="form-group">
+                <%= f.label :address_line, "その他" %>
+                <%= f.text_field :address_line, class:"form-control" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              ペットカテゴリー<span>　※</span>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.collection_select :pet_category_id, @pet_categories, :id, :name, { prompt: "選択してください" }, { class: "form-control" } %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              品種
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :pet_breed, class:"form-control" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              性別<span> ※</span>
+            </th>
+            <td>
+              <div class="form-check form-check-inline">
+                <%= f.collection_radio_buttons :pet_sex_id, @pet_sexes, :id, :name, class: "form-check-input" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              コメント<span> ※</span>
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.text_area :content, class:"form-control" %>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <%= f.submit "投稿" %>
     <% end %>
     
   </div>
 </div>
 
-<%#
-<script>
+<%#<script>
     /*global $*/
-// まずBを非表示にする
+// まず市区町村を非表示にする
 $('#city_id > option[data-id]').wrap('<span>');
  
 $('#post_prefecture_id').change(function () {
-  // Aが変更されるときに一度非表示にする
+  // 都道府県が変更されるときに一度非表示にする
   $('#city_id > option[data-id]').wrap('<span>');
-  // Aのvalueに対応するBのdata-idのoptionを表示する
+  // 都道府県のvalueに対応する市区町村のdata-idのoptionを表示する
   $("#city_id option[data-id='"+ $('#post_prefecture_id').val() +"']").unwrap();
 });
-</script>
-%>
+</script>%>

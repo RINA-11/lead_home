@@ -1,28 +1,28 @@
 class SessionsController < ApplicationController
   
   def new
-    
   end
   
   def create
-    user=User.find_by(session_params[:email])
+    user=User.find_by(email: session_params[:email])
     if user && user.authenticate(session_params[:password])
       log_in(user)
-      redirect_to user_path
+      redirect_to user_path(current_user.id), success: "ログインに成功しました"
     else
+      flash.now[:danger] = "ログインに失敗しました"
       render :new
     end
   end
   
   def destroy
     log_out
-    redirect_to home_top_path
+    redirect_to home_top_path, info: "ログアウトしました"
   end
   
   private
   
     def log_in(user)
-     session[:user_id]=user_id
+     session[:user_id]=user.id
     end
     
     def log_out
