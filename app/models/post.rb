@@ -13,7 +13,7 @@ class Post < ApplicationRecord
                       length: { maximum: 1000 }
 
   belongs_to :user
-  belongs_to :purpose
+  has_one :purpose
   has_one :pet_category
   has_one :prefecture
   has_one :city

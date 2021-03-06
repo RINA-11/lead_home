@@ -1,7 +1,14 @@
 <div class="posts-new-wrapper">
   <div class="container">
+    <% if @post.errors.any? %>
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+       </ul>
+    <% end %>
     <%= form_with model: @post do |f| %>
-      <%= f.fields_for :images do |i| %>
+      <%= f.fields_for :images, @post.images.build do |i| %>
         <div class="form-group">
           <%= i.label :post_image, "画像 ※" %>
           <%= i.file_field :post_image, multiple: true %>

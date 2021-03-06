@@ -11,9 +11,15 @@ class PostsController < ApplicationController
   end
   
   def create
+    @purposes=Purpose.all
+    @pet_categories=PetCategory.all
+    @pet_sexes=PetSex.all
+    @prefectures=Prefecture.all
+    @cities=City.all
+    #@post.images.build
     @post=current_user.posts.new(post_params)
     if @post.save
-      redirect_to posts_path,  success: "投稿に成功しました"
+      redirect_to posts_path(@current_user.id),  success: "投稿に成功しました"
     else
       flash.now[:danger] = "投稿に失敗しました"
       render :new
