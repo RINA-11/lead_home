@@ -1,28 +1,36 @@
 <div class="posts-new-wrapper">
   <div class="container">
-    <% if @post.errors.any? %>
-      <ul>
-        <% @post.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-       </ul>
-    <% end %>
-    <%= form_with model: @post do |f| %>
-      <%= f.fields_for :images, @post.images.build do |i| %>
-        <div class="form-group">
-          <%= i.label :post_image, "画像 ※" %>
-          <%= i.file_field :post_image, multiple: true %>
-        </div>
+    <div>
+      <% if @post.errors.any? %>
+        <ul>
+          <% @post.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+         </ul>
       <% end %>
+    </div>
+    <%= form_with model: @post, local: true do |f| %>
       <table class="table">
         <tbody>
+          <tr>
+            <th>
+              画像 ※
+            </th>
+            <td>
+              <div class="field">
+                <%= f.fields_for :images, @post.images.build do |i| %>
+                  <%= i.file_field :post_image, multiple: true, post_image: "images[post_image][]" %>
+                <% end %>
+              </div>
+            </td>
+          </tr>
           <tr>
             <th>
               投稿の種類<span> ※</span>
             </th>
             <td>
               <div class="form-check form-check-inline">
-                <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, class: "form-check-input " %>
+                <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, class: "form-check-input" %>
               </div>
             </td>
           </tr>

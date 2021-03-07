@@ -14,4 +14,12 @@ class ApplicationController < ActionController::Base
     !current_user.nil?
   end
   
+  def master_all
+    @purposes=Purpose.all
+    @pet_categories=PetCategory.all
+    @pet_sexes=PetSex.all
+    @prefectures=Prefecture.all
+    @cities=City.all
+  end
+  
 end
