@@ -1,20 +1,20 @@
 class PostsController < ApplicationController
   
+  before_action :master_all, only: [ :new, :create ]
+  
   def new
-    master_all
     @post=Post.new
-    #@post.images.new
     @image=@post.images.build
   end
   
   def create
-    master_all
-    @post=current_user.posts.new(post_params)
+    @post=Post.new(post_params)
     if @post.save
-      params[:images]["post_image"].each do |a|
-        @image=@post.images.create(post_image: a, post_id: @post.id)
-      end
-      redirect_to posts_path(@current_user.id), success: "投稿に成功しました"
+      Image.create(post_id: @post.id, post_image: params[:post_image])
+      #params[:post_image].each do |a|
+        #@post.images.create(post_id: @post.id, post_image: a)
+      #end
+      redirect_to posts_path(current_user.id), success: "投稿に成功しました"
     else
       flash.now[:danger] = "投稿に失敗しました"
       render :new
@@ -28,7 +28,8 @@ class PostsController < ApplicationController
   private
   
     def post_params
-      params.require(:post).permit(:purpose_id,
+      params.require(:post).permit(:user_id,
+                                   :purpose_id,
                                    :pet_category_id,
                                    :prefecture_id,
                                    :city_id,
@@ -36,9 +37,7 @@ class PostsController < ApplicationController
                                    :pet_breed,
                                    :address_line,
                                    :happened_at,
-                                   :content,
-                                   images_attributes: [:id, :post_id, :post_image]
-                                   )
+                                   :content)
     end
   
 end

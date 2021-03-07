@@ -1,15 +1,18 @@
 <div class="posts-new-wrapper">
   <div class="container">
-    <div>
-      <% if @post.errors.any? %>
+    <% if @post.errors.any? %>
+      <div class="message">
         <ul>
           <% @post.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
-         </ul>
-      <% end %>
-    </div>
+        </ul>
+      </div>
+    <% end %>
+    
+    <%#= form_for @post do |f| %>
     <%= form_with model: @post, local: true do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
       <table class="table">
         <tbody>
           <tr>
@@ -17,36 +20,34 @@
               画像 ※
             </th>
             <td>
-              <div class="field">
-                <%= f.fields_for :images, @post.images.build do |i| %>
-                  <%= i.file_field :post_image, multiple: true, post_image: "images[post_image][]" %>
-                <% end %>
+              <div class="form-group">
+                <%= f.file_field :image, name: "post_image[]", multiple: true %>
               </div>
             </td>
           </tr>
           <tr>
             <th>
-              投稿の種類<span> ※</span>
+              投稿の種類 ※
             </th>
             <td>
               <div class="form-check form-check-inline">
-                <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, class: "form-check-input" %>
+                <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, class: "form-check-input", checked: 1 %>
               </div>
             </td>
           </tr>
           <tr>
             <th>
-              日時<span> ※</span>
+              日時 ※
             </th>
             <td>
               <div class="form-group">
-                <%= f.datetime_field :happened_at, class: "form-control" %>
+                <%= f.datetime_field :happened_at, class: "form-control", value: Time.current.strftime("%Y-%m-%dT00:00:00") %>
               </div>
             </td>
           </tr>
           <tr>
             <th>
-              場所<span> ※</span>
+              場所 ※
             </th>
             <td>
               <div class="form-group">
@@ -59,17 +60,17 @@
               </div>
               <div class="form-group">
                 <%= f.label :address_line, "その他" %>
-                <%= f.text_field :address_line, class:"form-control" %>
+                <%= f.text_field :address_line, class:"form-control", value: "その他" %>
               </div>
             </td>
           </tr>
           <tr>
             <th>
-              ペットカテゴリー<span>　※</span>
+              ペットカテゴリー ※
             </th>
             <td>
               <div class="form-group">
-                <%= f.collection_select :pet_category_id, @pet_categories, :id, :name, { prompt: "選択してください" }, { class: "form-control" } %>
+                <%= f.collection_select :pet_category_id, @pet_categories, :id, :name, { prompt: "選択してください", selected: 1 }, { class: "form-control" } %>
               </div>
             </td>
           </tr>
@@ -79,27 +80,27 @@
             </th>
             <td>
               <div class="form-group">
-                <%= f.text_field :pet_breed, class:"form-control" %>
+                <%= f.text_field :pet_breed, class:"form-control", value: "柴犬" %>
               </div>
             </td>
           </tr>
           <tr>
             <th>
-              性別<span> ※</span>
+              性別 ※
             </th>
             <td>
               <div class="form-check form-check-inline">
-                <%= f.collection_radio_buttons :pet_sex_id, @pet_sexes, :id, :name, class: "form-check-input" %>
+                <%= f.collection_radio_buttons :pet_sex_id, @pet_sexes, :id, :name, class: "form-check-input", checked: 1 %>
               </div>
             </td>
           </tr>
           <tr>
             <th>
-              コメント<span> ※</span>
+              コメント ※
             </th>
             <td>
               <div class="form-group">
-                <%= f.text_area :content, class:"form-control" %>
+                <%= f.text_area :content, class: "form-control", value: "迷子です" %>
               </div>
             </td>
           </tr>

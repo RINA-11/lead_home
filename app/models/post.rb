@@ -1,7 +1,5 @@
 class Post < ApplicationRecord
   
-  validates_associated :images
-  
   validates :user_id, presence: true
   validates :purpose_id, presence: true
   validates :pet_category_id, presence: true
@@ -13,7 +11,6 @@ class Post < ApplicationRecord
   validates :happened_at, presence: true
   validates :content, presence: true,
                       length: { maximum: 1000 }
-  validates :images, presence: true
 
   belongs_to :user
   has_one :purpose
@@ -25,7 +22,5 @@ class Post < ApplicationRecord
   has_many :images, dependent: :destroy
   has_many :clips
   has_many :messages, dependent: :destroy
-  
-  accepts_nested_attributes_for :images
   
 end
