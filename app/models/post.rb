@@ -26,5 +26,6 @@ class Post < ApplicationRecord
   validates :happened_at, presence: true
   validates :content, presence: true,
                       length: { maximum: 1000 }
+  validates :images, presence: true
   
 end
