@@ -21,7 +21,9 @@
             </th>
             <td>
               <div class="form-group">
-                <%= f.file_field :image, name: "post_image[]", multiple: true %>
+                <%= f.fields_for :images, @post.images.build do |i| %>
+                  <%= i.file_field :post_image, name: "images[post_image][]", multiple: true %>
+                <% end %>
               </div>
             </td>
           </tr>

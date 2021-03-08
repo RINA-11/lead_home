@@ -1,5 +1,10 @@
 class User < ApplicationRecord
   
+  has_many :posts, dependent: :destroy
+  has_many :clips
+  has_many :messages
+  #has_many :clipped_posts, through: clips, source: post
+  
   validates :name, presence: true,
                    length: { maximum: 30 }
   validates :email, presence: true,
@@ -10,11 +15,6 @@ class User < ApplicationRecord
                        length: { minimum: 8 },
                        format: { with: /\A[\w\-]+\z/ }
                          
-  has_many :posts, dependent: :destroy
-  has_many :clips
-  has_many :messages
-  #has_many :clipped_posts, through: clips, source: post
-  
   has_secure_password
   
 end

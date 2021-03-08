@@ -4,16 +4,15 @@ class PostsController < ApplicationController
   
   def new
     @post=Post.new
-    @image=@post.images.build
+    @post_image=@post.images.build
   end
   
   def create
     @post=Post.new(post_params)
     if @post.save
-      Image.create(post_id: @post.id, post_image: params[:post_image])
-      #params[:post_image].each do |a|
-        #@post.images.create(post_id: @post.id, post_image: a)
-      #end
+      params[:images][:post_image].each do |a|
+        @post_image=@post.images.create(post_id: @post.id, post_image: a)
+      end
       redirect_to posts_path(current_user.id), success: "投稿に成功しました"
     else
       flash.now[:danger] = "投稿に失敗しました"
@@ -37,7 +36,8 @@ class PostsController < ApplicationController
                                    :pet_breed,
                                    :address_line,
                                    :happened_at,
-                                   :content)
+                                   :content,
+                                   images_attributes: [:post_image])
     end
   
 end

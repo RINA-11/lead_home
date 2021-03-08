@@ -1,4 +1,19 @@
 class Post < ApplicationRecord
+
+  belongs_to :user
+  has_one :purpose
+  has_one :pet_category
+  has_one :prefecture
+  has_one :city
+  has_one :pet_sex
+  has_one :purpose
+  has_many :images, dependent: :destroy
+  has_many :clips
+  has_many :messages, dependent: :destroy
+  
+  accepts_nested_attributes_for :images
+  
+  validates_associated :images
   
   validates :user_id, presence: true
   validates :purpose_id, presence: true
@@ -11,16 +26,5 @@ class Post < ApplicationRecord
   validates :happened_at, presence: true
   validates :content, presence: true,
                       length: { maximum: 1000 }
-
-  belongs_to :user
-  has_one :purpose
-  has_one :pet_category
-  has_one :prefecture
-  has_one :city
-  has_one :pet_sex
-  has_one :purpose
-  has_many :images, dependent: :destroy
-  has_many :clips
-  has_many :messages, dependent: :destroy
   
 end
