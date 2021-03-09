@@ -3,15 +3,19 @@ class PostsController < ApplicationController
   before_action :master_all, only: [ :new, :create ]
   
   def new
-    @post=Post.new
-    @post_image=@post.images.build
+    @post = Post.new
+    #2.times do
+    @post.images.build
+    #end
   end
   
   def create
-    @post=Post.new(post_params)
+    #binding.pry
+    @post = Post.new(post_params)
+    #binding.pry
     if @post.save
       params[:images][:post_image].each do |a|
-        @post_image=@post.images.create(post_id: @post.id, post_image: a)
+        @post_image = @post.images.create(post_id: @post.id, post_image: a)
       end
       redirect_to posts_path(current_user.id), success: "投稿に成功しました"
     else
@@ -21,7 +25,7 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts=Post.all.order(created_at: "desc")
+    @posts = Post.all.order(created_at: "desc")
   end
   
   private

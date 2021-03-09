@@ -15,11 +15,11 @@ class ApplicationController < ActionController::Base
   end
   
   def master_all
-    @purposes=Purpose.all
-    @pet_categories=PetCategory.all
-    @pet_sexes=PetSex.all
-    @prefectures=Prefecture.all
-    @cities=City.all
+    @purposes = Purpose.all
+    @prefectures = Prefecture.all
+    @cities = City.all
+    @pet_categories = PetCategory.all
+    @pet_sexes = PetSex.all
   end
   
 end

@@ -15,6 +15,7 @@ class Post < ApplicationRecord
   
   validates_associated :images
   
+  #validates :images, presence: true
   validates :user_id, presence: true
   validates :purpose_id, presence: true
   validates :pet_category_id, presence: true
@@ -26,6 +27,5 @@ class Post < ApplicationRecord
   validates :happened_at, presence: true
   validates :content, presence: true,
                       length: { maximum: 1000 }
-  validates :images, presence: true
   
 end

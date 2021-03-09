@@ -1,12 +1,6 @@
 <div class="users-new-wrapper">
   <div class="container">
-    <% if @user.errors.any? %>
-      <ul>
-        <% @user.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-       </ul>
-    <% end %>
+    <%= render "layouts/error_messages", model: @user %>
     <div class="row">
       <div class="col-md-offset-4 col-md-4">
         <%= form_with model: @user, method: :post, local: true do |f| %>
