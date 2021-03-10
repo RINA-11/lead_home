@@ -18,7 +18,7 @@
             <td>
               <%= f.fields_for :images, @post.images.build do |i| %>
                 <div class="form-group">
-                  <%= i.file_field :post_image %>
+                  <%= i.file_field :post_image,  multiple: true %>
                 </div>
               <% end %>
               <% if @post.errors.include?(:images) %>

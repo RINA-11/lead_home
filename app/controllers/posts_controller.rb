@@ -40,7 +40,7 @@ class PostsController < ApplicationController
                                    :address_line,
                                    :happened_at,
                                    :content,
-                                   images_attributes: [:post_image])
+                                   images_attributes: [:id, :post_id, { post_image: [] } ])
     end
   
 end

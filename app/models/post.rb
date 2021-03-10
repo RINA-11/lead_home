@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   
   accepts_nested_attributes_for :images
   
-  validates_associated :images, reject_if: proc { |attributes| attributes['post_image'].blank? }
+  validates_associated :images
   
   validates :images, presence: true
   validates :user_id, presence: true
