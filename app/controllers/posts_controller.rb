@@ -5,18 +5,17 @@ class PostsController < ApplicationController
   def new
     @post = Post.new
     #2.times do
-    @post.images.build
+    @post_image = @post.images.build
     #end
   end
   
   def create
-    #binding.pry
     @post = Post.new(post_params)
     #binding.pry
     if @post.save
-      params[:images][:post_image].each do |a|
-        @post_image = @post.images.create(post_id: @post.id, post_image: a)
-      end
+      #params[:images][:post_image].each do |a|
+        #@post_image = @post.images.create(post_id: @post.id, post_image: a)
+      #end
       redirect_to posts_path(current_user.id), success: "投稿に成功しました"
     else
       flash.now[:danger] = "投稿に失敗しました"

@@ -16,16 +16,16 @@
               画像 ※
             </th>
             <td>
-              <div class="form-group">
-                <%= f.fields_for :images, @post.images.build do |i| %>
-                  <%= i.file_field :post_image,  multiple: true, name: "images[post_image][]" %>
-                <% end %>
-                <% if @post.errors.include?(:images) %>
-                  <p style="color: red;">
-                    <%= @post.errors.full_messages_for(:images).first %>
-                  </p>
-                <% end %>
-              </div>
+              <%= f.fields_for :images, @post.images.build do |i| %>
+                <div class="form-group">
+                  <%= i.file_field :post_image %>
+                </div>
+              <% end %>
+              <% if @post.errors.include?(:images) %>
+                <p style="color: red;">
+                  <%= @post.errors.full_messages_for(:images).first %>
+                </p>
+              <% end %>
             </td>
           </tr>
           <tr>

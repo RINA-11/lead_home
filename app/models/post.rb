@@ -7,15 +7,15 @@ class Post < ApplicationRecord
   has_one :city
   has_one :pet_sex
   has_one :purpose
-  has_many :images, dependent: :destroy
+  has_many :images, dependent: :destroy, inverse_of: :post
   has_many :clips
   has_many :messages, dependent: :destroy
   
   accepts_nested_attributes_for :images
   
-  validates_associated :images
+  validates_associated :images, reject_if: proc { |attributes| attributes['post_image'].blank? }
   
-  #validates :images, presence: true
+  validates :images, presence: true
   validates :user_id, presence: true
   validates :purpose_id, presence: true
   validates :pet_category_id, presence: true
