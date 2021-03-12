@@ -8,8 +8,9 @@ class Post < ApplicationRecord
   has_one :pet_sex
   has_one :purpose
   has_many :images, dependent: :destroy, inverse_of: :post
-  has_many :clips
+  has_many :clips, dependent: :destroy
   has_many :messages, dependent: :destroy
+  has_many :clip_users, through: :clips, source: "user"
   
   accepts_nested_attributes_for :images
   

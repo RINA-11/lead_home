@@ -4,7 +4,7 @@ class Image < ApplicationRecord
   
   mount_uploaders :post_image, ImageUploader
   
-  #validates :post_id, presence: true
-  validates :post_image, presence: true
+  validates :post, presence: true
+  validates :post_image, presence: true, length: { maximum:5 }
   
 end

@@ -1,0 +1,111 @@
+<div class="posts-show-wrapper">
+  <div class="container">
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>
+            画像
+          </th>
+          <td>
+            <% @post.images.each do |image| %>
+              <%= image_tag image.post_image.url(:thumb150) %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            投稿の種類
+          </th>
+          <td>
+            <%= @post.purpose.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            日時
+          </th>
+          <td>
+            <%= @post.happened_at %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            場所
+          </th>
+          <td>
+            <%= @post.prefecture.name + @post.city.name + @post.address_line %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            ペットカテゴリー
+          </th>
+          <td>
+            <%= @post.pet_category.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            品種
+          </th>
+          <td>
+            <%= @post.pet_breed %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            品種
+          </th>
+          <td>
+            <%= @post.pet_sex.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            コメント
+          </th>
+          <td>
+            <%= @post.content %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div>
+      <% if !post.clip_users.include?(current_user) %>
+        <%= link to clips_path(post_id: post.id), method: :post do %>
+          <i class="fas fa-paperclip clipped_btn"></i>
+        <% end %>
+      <% else %>
+        <%= link to clips_path(post_id: post.id), method: :delete do %>
+          <i class="fas fa-paperclip clip_btn"></i>
+        <% end %>
+      <% end %>
+      <%= post.clip_users.count %>
+    </div>
+    
+    <div class="message-create">
+      <%= form_with model: @message, local: true do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :post_id, value: post.id %>
+        <div class="form-group">
+          <%= f.text_area :content, class: "form-control", required: true %>
+          <% if @message.errors.include?(:content) %>
+            <p style="color: red;">
+              <%= @message.errors.full_messages_for(:content).first %>
+            </p>
+          <% end %>
+        </div>
+        <%= f.submit "メッセージする" %>
+      <% end %>
+    </div>
+    
+    <div class="message-index">
+      <%= @post.messages.each do |message| %>
+        <%= message.content %>
+        <%= link_to "削除", message_path(post_id: post.id), method: :delete %>
+      <% end %>
+    </div>
+    
+  </div>
+</div>

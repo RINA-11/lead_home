@@ -13,10 +13,12 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     #binding.pry
     if @post.save
-      #params[:images][:post_image].each do |a|
-        #@post_image = @post.images.create(post_id: @post.id, post_image: a)
+      #if params[:images].present?
+        #params[:images][:post_image].each do |a|
+          #@post_image = @post.images.create(post_id: @post.id, post_image: a)
+        #end
       #end
-      redirect_to posts_path(current_user.id), success: "投稿に成功しました"
+      redirect_to posts_path, success: "投稿に成功しました"
     else
       flash.now[:danger] = "投稿に失敗しました"
       render :new
@@ -24,7 +26,12 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.all.order(created_at: "desc")
+    @posts = Post.all.order(created_at: "desc").includes(:clip_users)
+  end
+  
+  def show
+    @post = Post.find_by(id: params[:id])
+    @message = Message.new
   end
   
   private

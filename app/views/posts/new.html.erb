@@ -17,8 +17,8 @@
             </th>
             <td>
               <%= f.fields_for :images, @post.images.build do |i| %>
-                <div class="form-group">
-                  <%= i.file_field :post_image,  multiple: true %>
+                <div class="field">
+                  <%= i.file_field :post_image, multiple: true, required: true %>
                 </div>
               <% end %>
               <% if @post.errors.include?(:images) %>
@@ -34,7 +34,7 @@
             </th>
             <td>
               <div class="form-check form-check-inline">
-                <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, class: "form-check-input", checked: 1 %>
+                <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, { class: "form-check-input", checked: 1 }, required: true %>
                 <% if @post.errors.include?(:purpose_id) %>
                   <p style="color: red;">
                     <%= @post.errors.full_messages_for(:purpose_id).first %>
@@ -49,7 +49,7 @@
             </th>
             <td>
               <div class="form-group">
-                <%= f.datetime_field :happened_at, class: "form-control", value: Time.current.strftime("%Y-%m-%dT00:00:00") %>
+                <%= f.datetime_field :happened_at, required: true, class: "form-control", value: Time.current.strftime("%Y-%m-%dT00:00:00") %>
                 <% if @post.errors.include?(:happened_at) %>
                   <p style="color: red;">
                     <%= @post.errors.full_messages_for(:happened_at).first %>
@@ -65,7 +65,7 @@
             <td>
               <div class="form-group">
                 <%= f.label :prefecture_id, "都道府県 ※" %>
-                <%= f.collection_select :prefecture_id, @prefectures, :id, :name, { prompt: "選択してください" }, { class: "form-control" } %>
+                <%= f.collection_select :prefecture_id, @prefectures, :id, :name, { prompt: "選択してください" }, { class: "form-control", required: true } %>
                 <% if @post.errors.include?(:prefecture_id) %>
                   <p style="color: red;">
                     <%= @post.errors.full_messages_for(:prefecture_id).first %>
@@ -74,7 +74,7 @@
               </div>
               <div class="form-group">
                 <%= f.label :city_id, "市区町村 ※" %>
-                <%= f.select :city_id, options_for_select(@cities.map { |c|[c[:name], c[:id], { "data-id" => c[:prefecture_id] }] }), { prompt: "選択してください" }, { class: "form-control", id: :city_id } %>
+                <%= f.select :city_id, options_for_select(@cities.map { |c|[c[:name], c[:id], { "data-id" => c[:prefecture_id] }] }), { prompt: "選択してください" }, { class: "form-control", required: true, id: :city_id } %>
                 <% if @post.errors.include?(:city_id) %>
                   <p style="color: red;">
                     <%= @post.errors.full_messages_for(:city_id).first %>
@@ -93,7 +93,7 @@
             </th>
             <td>
               <div class="form-group">
-                <%= f.collection_select :pet_category_id, @pet_categories, :id, :name, { prompt: "選択してください", selected: 1 }, { class: "form-control" } %>
+                <%= f.collection_select :pet_category_id, @pet_categories, :id, :name, { prompt: "選択してください", selected: 1 }, { class: "form-control", required: true } %>
                 <% if @post.errors.include?(:pet_category_id) %>
                   <p style="color: red;">
                     <%= @post.errors.full_messages_for(:pet_category_id).first %>
@@ -118,7 +118,7 @@
             </th>
             <td>
               <div class="form-check form-check-inline">
-                <%= f.collection_radio_buttons :pet_sex_id, @pet_sexes, :id, :name, class: "form-check-input", checked: 1 %>
+                <%= f.collection_radio_buttons :pet_sex_id, @pet_sexes, :id, :name, { class: "form-check-input", checked: 1 }, required: true %>
                 <% if @post.errors.include?(:pet_sex_id) %>
                   <p style="color: red;">
                     <%= @post.errors.full_messages_for(:pet_sex_id).first %>
@@ -133,7 +133,7 @@
             </th>
             <td>
               <div class="form-group">
-                <%= f.text_area :content, class: "form-control", value: "迷子です" %>
+                <%= f.text_area :content, class: "form-control", required: true, value: "迷子です" %>
                 <% if @post.errors.include?(:content) %>
                   <p style="color: red;">
                     <%= @post.errors.full_messages_for(:content).first %>

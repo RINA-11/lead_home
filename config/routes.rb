@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :posts#, only: [:new, :create, :index]
+  resources :messages#, only: [:create, :destroy]
+  
+  resources :clips#, only: [:index, :create, :destroy]
+  
+  resources :posts#, only: [:new, :create, :index, :show]
   
   resources :sessions#, only: [:new, :create, :destroy]
   
