@@ -1,1 +1,34 @@
-<h1>Users#show</h1>
+<div class="users-show-wrapper">
+  <div class="container">
+    <table class="table">
+      <tbady>
+        <tr>
+          <th>
+            ユーザー名
+          </th>
+          <td>
+            <%= @user.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            メールアドレス
+          </th>
+          <td>
+            <%= @user.email %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            パスワード
+          </th>
+          <td>
+            非表示
+          </td>
+        </tr>
+      </tbady>
+    </table>
+    <%= link_to "編集", edit_user_path(id: current_user.id) %>
+    <%= link_to "削除", user_path, method: :delete %>
+  </div>
+</div>

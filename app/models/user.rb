@@ -2,7 +2,7 @@ class User < ApplicationRecord
   
   has_many :posts, dependent: :destroy
   has_many :clips, dependent: :destroy
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :clip_posts, through: :clips, source: "post"
   
   validates :name, presence: true,

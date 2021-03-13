@@ -26,7 +26,7 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.all.order(created_at: "desc").includes(:clip_users)
+    @posts = Post.all.page(params[:page]).per(20)
   end
   
   def show
