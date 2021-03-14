@@ -8,7 +8,11 @@
           </th>
           <td>
             <% @post.images.each do |image| %>
-              <%= image_tag image.post_image.url(:thumb150) %>
+              <%= image_tag image.post_image1.url(:thumb150) %>
+              <%#= image_tag image.post_image2.url(:thumb150) %>
+              <%#= image_tag image.post_image3.url(:thumb150) %>
+              <%#= image_tag image.post_image4.url(:thumb150) %>
+              <%#= image_tag image.post_image5.url(:thumb150) %>
             <% end %>
           </td>
         </tr>
@@ -17,7 +21,7 @@
             投稿の種類
           </th>
           <td>
-            <%= @post.purpose.name %>
+            <%= @post.purpose_id %>
           </td>
         </tr>
         <tr>
@@ -33,7 +37,7 @@
             場所
           </th>
           <td>
-            <%= @post.prefecture.name + @post.city.name + @post.address_line %>
+            <%#= @post.prefecture_id + @post.city_id + @post.address_line %>
           </td>
         </tr>
         <tr>
@@ -41,7 +45,7 @@
             ペットカテゴリー
           </th>
           <td>
-            <%= @post.pet_category.name %>
+            <%= @post.pet_category_id %>
           </td>
         </tr>
         <tr>
@@ -54,10 +58,10 @@
         </tr>
         <tr>
           <th>
-            品種
+            性別
           </th>
           <td>
-            <%= @post.pet_sex.name %>
+            <%= @post.pet_sex_id %>
           </td>
         </tr>
         <tr>
@@ -72,22 +76,22 @@
     </table>
     
     <div>
-      <% if !post.clip_users.include?(current_user) %>
-        <%= link to clips_path(post_id: post.id), method: :post do %>
-          <i class="fas fa-paperclip my-gray"></i>
+      <% if !@post.clip_users.include?(current_user) %>
+        <%= link_to clips_path(post_id: @post.id), method: :post do %>
+          <i class="fas fa-paperclip" style="color: gray;"></i>
         <% end %>
       <% else %>
-        <%= link to clips_path(post_id: post.id), method: :delete do %>
-          <i class="fas fa-paperclip my-skyblue"></i>
+        <%= link_to clip_path(post_id: @post.id), method: :delete do %>
+          <i class="fas fa-paperclip" style="color: deepskyblue;"></i>
         <% end %>
       <% end %>
-      <%= post.clip_users.count %>
+      <%= @post.clip_users.count %>
     </div>
     
     <div class="message-create">
       <%= form_with model: @message, local: true do |f| %>
         <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :post_id, value: post.id %>
+        <%= f.hidden_field :post_id, value: @post.id %>
         <div class="form-group">
           <%= f.text_area :content, class: "form-control", required: true %>
           <% if @message.errors.include?(:content) %>
@@ -101,9 +105,9 @@
     </div>
     
     <div class="message-index">
-      <%= @post.messages.each do |message| %>
+      <% @post.messages.each do |message| %>
         <%= message.content %>
-        <%= link_to "削除", message_path(post_id: post.id), method: :delete %>
+        <%= link_to "削除", message_path(post_id: @post.id), method: :delete %>
       <% end %>
     </div>
     

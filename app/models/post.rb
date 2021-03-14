@@ -14,6 +14,8 @@ class Post < ApplicationRecord
   
   accepts_nested_attributes_for :images
   
+  mount_uploader :video, PostUploader
+  
   validates_associated :images
   
   validates :images, presence: true

@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     if @message.save
-      redirect_to post_path, success: "メッセージを投稿しました"
+      redirect_to post_path(id: params[:message][:post_id]), success: "メッセージを投稿しました"
     else
       flash.now[:danger] = "メッセージの投稿に失敗しました"
       @message = Message.new
@@ -12,9 +12,9 @@ class MessagesController < ApplicationController
   end
   
   def destroy
-    @message = Message.find_by(id: params[:id], user_id:current_user.id, post_id: params[:post_id])
+    @message = Message.find_by(user_id:current_user.id, post_id: params[:post_id])
     if @message.destroy
-      redirect_to , success: "メッセージを削除しました"
+      redirect_to post_path(id: params[:post_id]), success: "メッセージを削除しました"
     else
       flash.now[:danger] = "メッセージの削除に失敗しました"
       render template: "posts/show"
@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
   private
   
     def message_params
-      params.require(:message).permit(:user_id, :post_id, :content)
+      params.require(:message).permit(:id, :user_id, :post_id, :content)
     end
   
 end

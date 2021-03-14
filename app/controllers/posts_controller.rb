@@ -4,20 +4,13 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.new
-    #2.times do
     @post_image = @post.images.build
-    #end
   end
   
   def create
     @post = Post.new(post_params)
     #binding.pry
     if @post.save
-      #if params[:images].present?
-        #params[:images][:post_image].each do |a|
-          #@post_image = @post.images.create(post_id: @post.id, post_image: a)
-        #end
-      #end
       redirect_to posts_path, success: "投稿に成功しました"
     else
       flash.now[:danger] = "投稿に失敗しました"
@@ -26,13 +19,15 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.all.page(params[:page]).per(20)
+    @posts = Post.includes(:images).all.page(params[:page]).per(20)
   end
   
   def show
     @post = Post.find_by(id: params[:id])
     @message = Message.new
   end
+  
+  
   
   private
   
@@ -47,7 +42,14 @@ class PostsController < ApplicationController
                                    :address_line,
                                    :happened_at,
                                    :content,
-                                   images_attributes: [:id, :post_id, { post_image: [] } ])
+                                   :video,
+                                   images_attributes: [:id,
+                                                       :post_id,
+                                                       :post_image1,
+                                                       :post_image2,
+                                                       :post_image3,
+                                                       :post_image4,
+                                                       :post_image5])
     end
   
 end

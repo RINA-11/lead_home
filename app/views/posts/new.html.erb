@@ -18,7 +18,11 @@
             <td>
               <%= f.fields_for :images, @post.images.build do |i| %>
                 <div class="field">
-                  <%= i.file_field :post_image, multiple: true, required: true %>
+                  <%= i.file_field :post_image1, required: true %>
+                  <%= i.file_field :post_image2 %>
+                  <%= i.file_field :post_image3 %>
+                  <%= i.file_field :post_image4 %>
+                  <%= i.file_field :post_image5 %>
                 </div>
               <% end %>
               <% if @post.errors.include?(:images) %>
@@ -26,6 +30,16 @@
                   <%= @post.errors.full_messages_for(:images).first %>
                 </p>
               <% end %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              動画
+            </th>
+            <td>
+              <div class="field">
+                <%= f.file_field :video %>
+              </div>
             </td>
           </tr>
           <tr>

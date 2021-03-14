@@ -1,7 +1,14 @@
 <div class="clips-index-wrqpper">
   <div class="container">
-    <%= @clip_posts.each do |post| %>
-      
+    <% @clip_posts.each do |post| %>
+      <div>
+        <%= link_to post_path(id: post.id) do %>
+          <%= post.content %>
+          <% post.images.each do |image| %>
+            <%= image_tag image.post_image1.url(:thumb150) %>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

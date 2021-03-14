@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_13_223015) do
+ActiveRecord::Schema.define(version: 2021_03_14_032843) do
 
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "prefecture_id", null: false
@@ -31,9 +31,13 @@ ActiveRecord::Schema.define(version: 2021_03_13_223015) do
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "post_id", null: false
-    t.string "post_image", null: false
+    t.string "post_image1", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "post_image2"
+    t.string "post_image3"
+    t.string "post_image4"
+    t.string "post_image5"
     t.index ["post_id"], name: "index_images_on_post_id"
   end
 
@@ -72,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_03_13_223015) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "prefecture_id", null: false
+    t.string "video"
     t.index ["city_id"], name: "index_posts_on_city_id"
     t.index ["pet_category_id"], name: "index_posts_on_pet_category_id"
     t.index ["pet_sex_id"], name: "index_posts_on_pet_sex_id"
