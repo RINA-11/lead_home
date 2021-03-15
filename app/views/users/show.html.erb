@@ -28,7 +28,17 @@
         </tr>
       </tbady>
     </table>
-    <%= link_to "編集", edit_user_path(id: current_user.id) %>
-    <%= link_to "削除", user_path, method: :delete %>
+    <%= link_to "編集", edit_user_path(id: current_user.id), class: "fas fa-user-edit" %>
+    <%= link_to "削除", user_path, method: :delete, class: "fas fa-user-slash" %>
+    <% @posts.each do |post| %>
+      <div>
+        <%= link_to post_path(id: post.id) do %>
+          <%= post.content %>
+          <% post.images.each do |image| %>
+            <%= image_tag image.post_image1.url(:thumb150) %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

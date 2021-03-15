@@ -18,6 +18,14 @@
         </tr>
         <tr>
           <th>
+            動画
+          </th>
+          <td>
+            <%= video_tag @post.video.url, muted: true, ontrols: true, controls: true, muted: true %>
+          </td>
+        </tr>
+        <tr>
+          <th>
             投稿の種類
           </th>
           <td>
@@ -74,6 +82,8 @@
         </tr>
       </tbody>
     </table>
+    <%= link_to "編集", edit_post_path(id: @post.id), class: "fas fa-edit" %>
+    <%= link_to "削除", post_path, method: :delete, class: "fas fa-trash-alt" %>
     
     <div>
       <% if !@post.clip_users.include?(current_user) %>
@@ -86,6 +96,11 @@
         <% end %>
       <% end %>
       <%= @post.clip_users.count %>
+    </div>
+    
+    <div>
+      <i class="far fa-comment-dots"></i>
+      <%= @post.messages.count %>
     </div>
     
     <div class="message-create">
@@ -107,7 +122,7 @@
     <div class="message-index">
       <% @post.messages.each do |message| %>
         <%= message.content %>
-        <%= link_to "削除", message_path(post_id: @post.id), method: :delete %>
+        <%= link_to "削除", message_path(post_id: @post.id), method: :delete, class: "fas fa-trash-alt" %>
       <% end %>
     </div>
     

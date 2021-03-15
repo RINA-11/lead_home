@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by(id: current_user.id)
+    @posts = Post.includes(:images).where(user_id: current_user.id).page(params[:page]).per(20)
   end
   
   def edit

@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.includes(:images).all.page(params[:page]).per(20)
+    @posts = Post.includes(:images).all.page(params[:page]).per(5)
   end
   
   def show
@@ -27,7 +27,17 @@ class PostsController < ApplicationController
     @message = Message.new
   end
   
+  def edit
+    @post = Post.find_by(id: params[:id])
+  end
   
+  def update
+    
+  end
+  
+  def destroy
+    
+  end
   
   private
   

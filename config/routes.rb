@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   resources :clips#, only: [:index, :create, :destroy]
   
-  resources :posts#, only: [:new, :create, :index, :show]
+  resources :posts#, only: [:new, :create, :index, :show, :edit, :update, :destroy]
   
   resources :sessions#, only: [:new, :create, :destroy]
   
