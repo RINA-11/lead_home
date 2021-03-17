@@ -16,18 +16,28 @@
               画像 ※
             </th>
             <td>
-              <%= f.fields_for :images, @post.images.build do |i| %>
+              <%= f.fields_for :image, @post.build_image do |i| %>
                 <div class="field">
+                  <%#= image_tag (@post.post_image1.url(:thumb150)) if @post.post_image1? %>
                   <%= i.file_field :post_image1, required: true %>
+                  <%= i.hidden_field :post_image1_cache %>
+                  <%#= image_tag (@post.post_image2.url(:thumb150)) if @post.post_image2? %>
                   <%= i.file_field :post_image2 %>
+                  <%= i.hidden_field :post_image2_cache %>
+                  <%#= image_tag (@post.post_image3.url(:thumb150)) if @post.post_image3? %>
                   <%= i.file_field :post_image3 %>
+                  <%= i.hidden_field :post_image3_cache %>
+                  <%#= image_tag (@post.post_image4.url(:thumb150)) if @post.post_image4? %>
                   <%= i.file_field :post_image4 %>
+                  <%= i.hidden_field :post_image4_cache %>
+                  <%#= image_tag (@post.post_image5.url(:thumb150)) if @post.post_image5? %>
                   <%= i.file_field :post_image5 %>
+                  <%= i.hidden_field :post_image5_cache %>
                 </div>
               <% end %>
-              <% if @post.errors.include?(:images) %>
+              <% if @post.errors.include?(:image) %>
                 <p style="color: red;">
-                  <%= @post.errors.full_messages_for(:images).first %>
+                  <%= @post.errors.full_messages_for(:image).first %>
                 </p>
               <% end %>
             </td>
@@ -39,6 +49,7 @@
             <td>
               <div class="field">
                 <%= f.file_field :video %>
+                <%= f.hidden_field :video_cache %>
               </div>
             </td>
           </tr>

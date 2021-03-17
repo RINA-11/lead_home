@@ -7,18 +7,18 @@ class Post < ApplicationRecord
   has_one :city
   has_one :pet_sex
   has_one :purpose
-  has_many :images, dependent: :destroy, inverse_of: :post
+  has_one :image, dependent: :destroy, inverse_of: :post
   has_many :clips, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :clip_users, through: :clips, source: "user"
   
-  accepts_nested_attributes_for :images
+  accepts_nested_attributes_for :image, update_only: true
   
   mount_uploader :video, PostUploader
   
-  validates_associated :images
+  validates_associated :image
   
-  validates :images, presence: true
+  validates :image, presence: true
   validates :user_id, presence: true
   validates :purpose_id, presence: true
   validates :pet_category_id, presence: true

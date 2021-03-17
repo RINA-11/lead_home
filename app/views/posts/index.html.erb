@@ -4,9 +4,7 @@
       <div>
         <%= link_to post_path(id: post.id) do %>
           <%= post.content %>
-          <% post.images.each do |image| %>
-            <%= image_tag image.post_image1.url(:thumb150) %>
-          <% end %>
+          <%= image_tag post.image.post_image1.url(:thumb150) %>
         <% end %>
       </div>
     <% end %>

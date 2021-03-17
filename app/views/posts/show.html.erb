@@ -7,13 +7,11 @@
             画像
           </th>
           <td>
-            <% @post.images.each do |image| %>
-              <%= image_tag image.post_image1.url(:thumb150) %>
-              <%#= image_tag image.post_image2.url(:thumb150) %>
-              <%#= image_tag image.post_image3.url(:thumb150) %>
-              <%#= image_tag image.post_image4.url(:thumb150) %>
-              <%#= image_tag image.post_image5.url(:thumb150) %>
-            <% end %>
+            <%= image_tag @post.image.post_image1.url(:thumb150) %>
+            <%= image_tag @post.image.post_image2.url(:thumb150) unless @post.image.post_image2.blank? %>
+            <%= image_tag @post.image.post_image3.url(:thumb150) unless @post.image.post_image3.blank? %>
+            <%= image_tag @post.image.post_image4.url(:thumb150) unless @post.image.post_image4.blank? %>
+            <%= image_tag @post.image.post_image5.url(:thumb150) unless @post.image.post_image5.blank? %>
           </td>
         </tr>
         <tr>
@@ -21,7 +19,7 @@
             動画
           </th>
           <td>
-            <%= video_tag @post.video.url, muted: true, ontrols: true, controls: true, muted: true %>
+            <%= video_tag @post.video.url muted: true, ontrols: true, controls: true unless @post.video.blank? %>
           </td>
         </tr>
         <tr>
@@ -45,7 +43,7 @@
             場所
           </th>
           <td>
-            <%#= @post.prefecture_id + @post.city_id + @post.address_line %>
+            <%= @post.prefecture_id %> + <%= @post.city_id %> + <%= @post.address_line unless @post.address_line.blank? %>
           </td>
         </tr>
         <tr>
@@ -61,7 +59,7 @@
             品種
           </th>
           <td>
-            <%= @post.pet_breed %>
+            <%= @post.pet_breed unless @post.pet_breed.blank? %>
           </td>
         </tr>
         <tr>
