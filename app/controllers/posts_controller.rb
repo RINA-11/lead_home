@@ -19,11 +19,12 @@ class PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.includes(:image).all.page(params[:page]).per(5)
+    @posts = Post.includes(:image).all.order(created_at: "desc").page(params[:page]).per(5)
+    
   end
   
   def show
-    @post = Post.find_by(id: params[:id])
+    post_master
     @message = Message.new
   end
   

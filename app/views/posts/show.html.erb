@@ -27,7 +27,7 @@
             投稿の種類
           </th>
           <td>
-            <%= @post.purpose_id %>
+            <%= @purpose.name %>
           </td>
         </tr>
         <tr>
@@ -35,7 +35,7 @@
             日時
           </th>
           <td>
-            <%= @post.happened_at %>
+            <%= @post.happened_at.strftime("%Y年%m月%d日 %H:%M") %>
           </td>
         </tr>
         <tr>
@@ -43,7 +43,8 @@
             場所
           </th>
           <td>
-            <%= @post.prefecture_id %> + <%= @post.city_id %> + <%= @post.address_line unless @post.address_line.blank? %>
+            <%= @prefecture.name + @city.name %><%=@post.address_line unless @post.address_line.blank? %>
+            <iframe src="https://maps.google.co.jp/maps?output=embed&t=m&q=<%= @prefecture.name + @city.name + @post.address_line %>" frameborder="0"></iframe>
           </td>
         </tr>
         <tr>
@@ -51,7 +52,7 @@
             ペットカテゴリー
           </th>
           <td>
-            <%= @post.pet_category_id %>
+            <%= @pet_category.name %>
           </td>
         </tr>
         <tr>
@@ -67,7 +68,7 @@
             性別
           </th>
           <td>
-            <%= @post.pet_sex_id %>
+            <%= @pet_sex.name %>
           </td>
         </tr>
         <tr>

@@ -1,5 +1,5 @@
-PetCategory.create([ {name: "イヌ"},
-                     {name: "ネコ"},
+PetCategory.create([ {name: "犬"},
+                     {name: "猫"},
                      {name: "鳥"},
                      {name: "ウサギ"},
                      {name: "ハムスター"},

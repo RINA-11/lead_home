@@ -3,10 +3,12 @@
     <% @clip_posts.each do |post| %>
       <div>
         <%= link_to post_path(id: post.id) do %>
-          <%= post.content %>
-          <% post.images.each do |image| %>
-            <%= image_tag image.post_image1.url(:thumb150) %>
-          <% end %>
+          <%= image_tag post.image.post_image1.url(:thumb150) %>
+          <%= Purpose.find_by(id: post.purpose_id).name %>
+          <%= post.happened_at.strftime("%Y年%m月%d日") %>
+          <%= Prefecture.find_by(id: post.prefecture_id).name + City.find_by(id: post.city_id).name %>
+          <%= PetCategory.find_by(id: post.pet_category_id).name %>
+          <%= PetSex.find_by(id: post.pet_sex_id).name %>
         <% end %>
       </div>
     <% end %>
