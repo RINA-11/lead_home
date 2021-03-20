@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   
-  before_action :master_all, only: [ :new, :create, :edit ]
+  before_action :master_all, only: [ :new, :create, :edit, :index ]
   
   def new
     @post = Post.new
@@ -20,11 +20,15 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.includes(:image).all.order(created_at: "desc").page(params[:page]).per(5)
-    
   end
   
   def show
-    post_master
+    @post = Post.find_by(id: params[:id])
+    @purpose = Purpose.find_by(id: @post.purpose_id)
+    @prefecture = Prefecture.find_by(id: @post.prefecture_id)
+    @city = City.find_by(id: @post.city_id)
+    @pet_category = PetCategory.find_by(id: @post.pet_category_id)
+    @pet_sex = PetSex.find_by(id: @post.pet_sex_id)
     @message = Message.new
   end
   

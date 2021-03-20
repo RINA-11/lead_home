@@ -17,16 +17,26 @@
             <td>
               <%= f.fields_for :image, @post.build_image do |i| %>
                 <div class="field">
-                  <%= i.file_field :post_image1, required: true %>
+                  
+                  <%= i.file_field :post_image1, required: true, id: :img_1 %>
                   <%= i.hidden_field :post_image1_cache %>
-                  <%= i.file_field :post_image2 %>
+                  <div id="img-form_1"></div>
+                  
+                  <%= i.file_field :post_image2, id: :img_2 %>
                   <%= i.hidden_field :post_image2_cache %>
-                  <%= i.file_field :post_image3 %>
+                  <div id="img-form_2"></div>
+                  
+                  <%= i.file_field :post_image3, id: :img_3 %>
                   <%= i.hidden_field :post_image3_cache %>
-                  <%= i.file_field :post_image4 %>
+                  <div id="img-form_3"></div>
+                  
+                  <%= i.file_field :post_image4, id: :img_4 %>
                   <%= i.hidden_field :post_image4_cache %>
-                  <%= i.file_field :post_image5 %>
+                  <div id="img-form_4"></div>
+                  
+                  <%= i.file_field :post_image5, id: :img_5 %>
                   <%= i.hidden_field :post_image5_cache %>
+                  <div id="img-form_5"></div>
                 </div>
               <% end %>
               <% if @post.errors.include?(:image) %>
@@ -42,8 +52,9 @@
             </th>
             <td>
               <div class="field">
-                <%= f.file_field :video %>
+                <%= f.file_field :video, id: :video %>
                 <%= f.hidden_field :video_cache %>
+                <div id="video-form"></div>
               </div>
             </td>
           </tr>

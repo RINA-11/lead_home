@@ -19,7 +19,7 @@
             動画
           </th>
           <td>
-            <%= video_tag @post.video.url muted: true, ontrols: true, controls: true unless @post.video.blank? %>
+            <%= video_tag @post.video.url, playsinline: true, controls: true, muted: true unless @post.video.blank? %>
           </td>
         </tr>
         <tr>
