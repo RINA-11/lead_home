@@ -4,14 +4,36 @@
       <tbody>
         <tr>
           <th>
+            投稿の種類
+          </th>
+          <td>
+            <%= @purpose.name %>
+          </td>
+        </tr>
+        <tr>
+          <th>
             画像
           </th>
           <td>
-            <%= image_tag @post.image.post_image1.url(:thumb150) %>
-            <%= image_tag @post.image.post_image2.url(:thumb150) unless @post.image.post_image2.blank? %>
-            <%= image_tag @post.image.post_image3.url(:thumb150) unless @post.image.post_image3.blank? %>
-            <%= image_tag @post.image.post_image4.url(:thumb150) unless @post.image.post_image4.blank? %>
-            <%= image_tag @post.image.post_image5.url(:thumb150) unless @post.image.post_image5.blank? %>
+            <div class="row">
+              <div class="col-xl-12">
+                <%= link_to @post.image.post_image1.url, "data-lightbox": @post.image.post_image1 do %>
+                  <%= image_tag @post.image.post_image1.url(:thumb150) %>
+                <% end %>
+                <%= link_to @post.image.post_image2.url, "data-lightbox": @post.image.post_image2 do %>
+                  <%= image_tag @post.image.post_image2.url(:thumb150) unless @post.image.post_image2.blank? %>
+                <% end %>
+                <%= link_to @post.image.post_image3.url, "data-lightbox": @post.image.post_image3 do %>
+                  <%= image_tag @post.image.post_image3.url(:thumb150) unless @post.image.post_image3.blank? %>
+                <% end %>
+                <%= link_to @post.image.post_image4.url, "data-lightbox": @post.image.post_image4 do %>
+                  <%= image_tag @post.image.post_image4.url(:thumb150) unless @post.image.post_image4.blank? %>
+                <% end %>
+                <%= link_to @post.image.post_image5.url, "data-lightbox": @post.image.post_image5 do %>
+                  <%= image_tag @post.image.post_image5.url(:thumb150) unless @post.image.post_image5.blank? %>
+                <% end %>
+              </div>
+            </div>
           </td>
         </tr>
         <tr>
@@ -20,14 +42,6 @@
           </th>
           <td>
             <%= video_tag @post.video.url, playsinline: true, controls: true, muted: true unless @post.video.blank? %>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            投稿の種類
-          </th>
-          <td>
-            <%= @purpose.name %>
           </td>
         </tr>
         <tr>
@@ -45,6 +59,14 @@
           <td>
             <%= @prefecture.name + @city.name %><%=@post.address_line unless @post.address_line.blank? %>
             <iframe src="https://maps.google.co.jp/maps?output=embed&t=m&q=<%= @prefecture.name + @city.name + @post.address_line %>" frameborder="0"></iframe>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            名前
+          </th>
+          <td>
+            <%= @post.pet_name unless @post.pet_name.blank? %>
           </td>
         </tr>
         <tr>

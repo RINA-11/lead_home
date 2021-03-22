@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by(id: current_user.id)
-    @posts = Post.includes(:image).where(user_id: current_user.id)
+    @posts = Post.includes(:image).where(user_id: current_user.id).order(created_at: "desc")
   end
   
   def edit

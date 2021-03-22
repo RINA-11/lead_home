@@ -1,5 +1,5 @@
 /*global $*/
-  
+
 $(document).on("turbolinks:load", function() {
   $("#video").on("change", function(e) {
     // 1枚だけ表示する

@@ -20,6 +20,24 @@ class PostsController < ApplicationController
   
   def index
     @posts = Post.includes(:image).all.order(created_at: "desc").page(params[:page]).per(5)
+    if params[:purpose_id].present?
+      @posts = @posts.get_by_purpose_id params[:purpose_id]
+    end
+    if params[:prefecture_id].present?
+      @posts = @posts.get_by_prefecture_id params[:prefecture_id]
+    end
+    if params[:city_id].present?
+      @posts = @posts.get_by_city_id params[:city_id]
+    end
+    if params[:pet_category_id].present?
+      @posts = @posts.get_by_pet_category_id params[:pet_category_id]
+    end
+    if params[:pet_breed].present?
+      @posts = @posts.get_by_pet_breed params[:pet_breed]
+    end
+    if params[:pet_sex_id].present?
+      @posts = @posts.get_by_pet_sex_id params[:pet_sex_id]
+    end
   end
   
   def show
@@ -72,6 +90,7 @@ class PostsController < ApplicationController
                                    :content,
                                    :video,
                                    :video_cache,
+                                   :pet_name,
                                    image_attributes: [:id,
                                                       :post_id,
                                                       :post_image1,

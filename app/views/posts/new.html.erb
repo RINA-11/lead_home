@@ -12,12 +12,26 @@
         <tbody>
           <tr>
             <th>
+              投稿の種類 ※
+            </th>
+            <td>
+              <div class="form-check form-check-inline">
+                <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, { class: "form-check-input", checked: 1 }, required: true %>
+                <% if @post.errors.include?(:purpose_id) %>
+                  <p style="color: red;">
+                    <%= @post.errors.full_messages_for(:purpose_id).first %>
+                  </p>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
               画像 ※
             </th>
             <td>
               <%= f.fields_for :image, @post.build_image do |i| %>
                 <div class="field">
-                  
                   <%= i.file_field :post_image1, required: true, id: :img_1 %>
                   <%= i.hidden_field :post_image1_cache %>
                   <div id="img-form_1"></div>
@@ -55,21 +69,6 @@
                 <%= f.file_field :video, id: :video %>
                 <%= f.hidden_field :video_cache %>
                 <div id="video-form"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              投稿の種類 ※
-            </th>
-            <td>
-              <div class="form-check form-check-inline">
-                <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, { class: "form-check-input", checked: 1 }, required: true %>
-                <% if @post.errors.include?(:purpose_id) %>
-                  <p style="color: red;">
-                    <%= @post.errors.full_messages_for(:purpose_id).first %>
-                  </p>
-                <% end %>
               </div>
             </td>
           </tr>
@@ -114,6 +113,16 @@
               <div class="form-group">
                 <%= f.label :address_line, "その他" %>
                 <%= f.text_field :address_line, class:"form-control", value: "その他" %>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              名前
+            </th>
+            <td>
+              <div class="form-group">
+                <%= f.text_field :pet_name, class:"form-control", value: "ポチ" %>
               </div>
             </td>
           </tr>

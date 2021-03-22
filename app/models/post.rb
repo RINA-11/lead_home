@@ -30,5 +30,13 @@ class Post < ApplicationRecord
   validates :happened_at, presence: true
   validates :content, presence: true,
                       length: { maximum: 1000 }
+  validates :pet_name, length: { maximum: 50 }
+  
+  scope :get_by_purpose_id, -> (purpose_id) { where(purpose_id: purpose_id) }
+  scope :get_by_prefecture_id, -> (prefecture_id) { where(prefecture_id: prefecture_id) }
+  scope :get_by_city_id, -> (city_id) { where(city_id: city_id) }
+  scope :get_by_pet_category_id, -> (pet_category_id) { where(pet_category_id: pet_category_id) }
+  scope :get_by_pet_breed, -> (pet_breed) { where(pet_breed: pet_breed) }
+  scope :get_by_pet_sex_id, -> (pet_sex_id) { where(pet_sex_id: pet_sex_id) }
   
 end
