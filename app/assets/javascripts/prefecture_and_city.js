@@ -23,3 +23,11 @@ $(document).on("turbolinks:load",function () {
     $("#city_id option[data-id='"+ $('#prefecture_id').val() +"']").unwrap();
   });
 });
+/*
+$(document).ready(function(){
+  $(".fa-angle-down").click(function(){
+    $(".search-form").slideToggle(800);
+    $(".fa-angle-down").toggleClass("fa-angle-up");
+  });
+});
+*/

@@ -35,7 +35,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   
   process :resize_to_limit => [1000, 1000]
   
-  version :thumb150 do
+  version :thumb200 do
     process :resize_and_pad => [200, 200, "#000000", "center"]
   end
 

@@ -33,7 +33,7 @@
     <% @posts.each do |post| %>
       <div>
         <%= link_to post_path(id: post.id) do %>
-          <%= image_tag post.image.post_image1.url(:thumb150) %>
+          <%= image_tag post.image.post_image1.url(:thumb200) %>
           <%= Purpose.find_by(id: post.purpose_id).name %>
           <%= post.happened_at.strftime("%Y年%m月%d日") %>
           <%= Prefecture.find_by(id: post.prefecture_id).name + City.find_by(id: post.city_id).name %>

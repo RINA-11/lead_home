@@ -1,5 +1,10 @@
 <div class="posts-show-wrapper">
   <div class="container">
+    <div class="sns-icon">
+      <a class="fab fa-line" href="https://line.me/R/msg/text/?#{request.url}"></a>
+      <a class="fab fa-twitter-square" href="https://twitter.com/share?text=迷子ペットの情報共有掲示板【lead-home】に投稿しました。拡散お願い致します。&url=#{request.url}&hashtags=迷子"></a>
+      <a class="fab fa-facebook-square" href="https://www.facebook.com/sharer.php?src=bm&u=#{request.url}"></a>
+    </div>
     <table class="table">
       <tbody>
         <tr>
@@ -18,19 +23,19 @@
             <div class="row">
               <div class="col-xl-12">
                 <%= link_to @post.image.post_image1.url, "data-lightbox": @post.image.post_image1 do %>
-                  <%= image_tag @post.image.post_image1.url(:thumb150) %>
+                  <%= image_tag @post.image.post_image1.url(:thumb200) %>
                 <% end %>
                 <%= link_to @post.image.post_image2.url, "data-lightbox": @post.image.post_image2 do %>
-                  <%= image_tag @post.image.post_image2.url(:thumb150) unless @post.image.post_image2.blank? %>
+                  <%= image_tag @post.image.post_image2.url(:thumb200) unless @post.image.post_image2.blank? %>
                 <% end %>
                 <%= link_to @post.image.post_image3.url, "data-lightbox": @post.image.post_image3 do %>
-                  <%= image_tag @post.image.post_image3.url(:thumb150) unless @post.image.post_image3.blank? %>
+                  <%= image_tag @post.image.post_image3.url(:thumb200) unless @post.image.post_image3.blank? %>
                 <% end %>
                 <%= link_to @post.image.post_image4.url, "data-lightbox": @post.image.post_image4 do %>
-                  <%= image_tag @post.image.post_image4.url(:thumb150) unless @post.image.post_image4.blank? %>
+                  <%= image_tag @post.image.post_image4.url(:thumb200) unless @post.image.post_image4.blank? %>
                 <% end %>
                 <%= link_to @post.image.post_image5.url, "data-lightbox": @post.image.post_image5 do %>
-                  <%= image_tag @post.image.post_image5.url(:thumb150) unless @post.image.post_image5.blank? %>
+                  <%= image_tag @post.image.post_image5.url(:thumb200) unless @post.image.post_image5.blank? %>
                 <% end %>
               </div>
             </div>
