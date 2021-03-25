@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   
+  before_action :master_all, only: [ :show ]
+  
   def new
     @user = User.new
   end
@@ -8,16 +10,16 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      redirect_to home_top_path, success: "登録が完了しました"
+      redirect_to home_top_path, success: "ユーザー登録が完了しました"
     else
-      flash.now[:danger] = "登録に失敗しました"
+      flash.now[:danger] = "ユーザー登録に失敗しました"
       render :new
     end
   end
   
   def show
     @user = User.find_by(id: current_user.id)
-    @posts = Post.includes(:image).where(user_id: current_user.id).order(created_at: "desc")
+    @posts = Post.includes(:image).where(user_id: current_user.id).order(created_at: "desc").page(params[:page]).per(24)
   end
   
   def edit
@@ -37,9 +39,9 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find_by(id: current_user.id)
     if @user.destroy
-      redirect_to home_top_path, success: "ユーザーを削除しました"
+      redirect_to home_top_path, info: "ユーザー情報を削除しました"
     else
-      flash.now[:danger] = "ユーザーの削除に失敗しました"
+      flash.now[:danger] = "ユーザー情報の削除に失敗しました"
       render :show
     end
   end

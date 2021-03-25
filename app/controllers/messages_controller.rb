@@ -14,7 +14,7 @@ class MessagesController < ApplicationController
   def destroy
     @message = Message.find_by(user_id:current_user.id, post_id: params[:post_id])
     if @message.destroy
-      redirect_to post_path(id: params[:post_id]), success: "メッセージを削除しました"
+      redirect_to post_path(id: params[:post_id]), info: "メッセージを削除しました"
     else
       flash.now[:danger] = "メッセージの削除に失敗しました"
       render template: "posts/show"

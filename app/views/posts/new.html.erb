@@ -12,11 +12,11 @@
         <tbody>
           <tr>
             <th>
-              投稿の種類 ※
+              投稿の種類<span> ※</span>
             </th>
             <td>
-              <div class="form-check form-check-inline">
-                <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, { class: "form-check-input", checked: 1 }, required: true %>
+              <div class="form-check">
+                <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, { class: "radio-inline", checked: 1 }, required: true %>
                 <% if @post.errors.include?(:purpose_id) %>
                   <p style="color: red;">
                     <%= @post.errors.full_messages_for(:purpose_id).first %>
@@ -27,11 +27,11 @@
           </tr>
           <tr>
             <th>
-              画像 ※
+              画像<span> ※</span>
             </th>
             <td>
               <%= f.fields_for :image, @post.build_image do |i| %>
-                <div class="field">
+                <div class="form-group">
                   <%= i.file_field :post_image1, required: true, id: :img_1 %>
                   <%= i.hidden_field :post_image1_cache %>
                   <div id="img-form_1"></div>
@@ -74,7 +74,7 @@
           </tr>
           <tr>
             <th>
-              日時 ※
+              日時<span> ※</span>
             </th>
             <td>
               <div class="form-group">
@@ -89,7 +89,7 @@
           </tr>
           <tr>
             <th>
-              場所 ※
+              場所<span> ※</span>
             </th>
             <td>
               <div class="form-group">
@@ -128,7 +128,7 @@
           </tr>
           <tr>
             <th>
-              ペットカテゴリー ※
+              ペットカテゴリー<span> ※</span>
             </th>
             <td>
               <div class="form-group">
@@ -153,10 +153,10 @@
           </tr>
           <tr>
             <th>
-              性別 ※
+              性別<span> ※</span>
             </th>
             <td>
-              <div class="form-check form-check-inline">
+              <div class="form-check">
                 <%= f.collection_radio_buttons :pet_sex_id, @pet_sexes, :id, :name, { class: "form-check-input", checked: 1 }, required: true %>
                 <% if @post.errors.include?(:pet_sex_id) %>
                   <p style="color: red;">
@@ -168,7 +168,7 @@
           </tr>
           <tr>
             <th>
-              コメント ※
+              コメント<span> ※</span>
             </th>
             <td>
               <div class="form-group">

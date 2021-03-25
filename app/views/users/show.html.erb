@@ -1,5 +1,4 @@
-<div class="users-show-wrapper">
-  <div class="container">
+
     <table class="table">
       <tbady>
         <tr>
@@ -30,17 +29,25 @@
     </table>
     <%= link_to "編集", edit_user_path(id: current_user.id), class: "fas fa-user-edit" %>
     <%= link_to "削除", user_path, method: :delete, class: "fas fa-user-slash" %>
-    <% @posts.each do |post| %>
-      <div>
-        <%= link_to post_path(id: post.id) do %>
-          <%= image_tag post.image.post_image1.url(:thumb200) %>
-          <%= Purpose.find_by(id: post.purpose_id).name %>
-          <%= post.happened_at.strftime("%Y年%m月%d日") %>
-          <%= Prefecture.find_by(id: post.prefecture_id).name + City.find_by(id: post.city_id).name %>
-          <%= PetCategory.find_by(id: post.pet_category_id).name %>
-          <%= PetSex.find_by(id: post.pet_sex_id).name %>
+    <div class="row">
+        <% @posts.each do |post| %>
+          <div class="col-xs-6 col-sm-4 col-md-3">
+            <%= link_to post_path(id: post.id) do %>
+              <div class="panel panel-info center-block thumbnail border">
+                <%= image_tag post.image.post_image1.url(:thumb200), class: "panel-img-top img-rounded" %>
+                <div class="panel-heading">
+                  <h4 class="panel-title"><%= @purposes.find_by(id: post.purpose_id).name %></h4>
+                </div>
+                <div class="panel-body">
+                  <p class="panel-text"><%= post.pet_name unless post.pet_name.blank? %></p>
+                  <p class="panel-text"><%= post.happened_at.strftime("%Y年%m月%d日") %></p>
+                  <p class="panel-text"><%= @prefectures.find_by(id: post.prefecture_id).name + @cities.find_by(id: post.city_id).name %></p>
+                  <p class="panel-text"><%= @pet_categories.find_by(id: post.pet_category_id).name %></p>
+                  <p class="panel-text"><%= @pet_sexes.find_by(id: post.pet_sex_id).name %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
         <% end %>
-      </div>
-    <% end %>
-  </div>
-</div>
+    </div>
+    <%= paginate @posts %>

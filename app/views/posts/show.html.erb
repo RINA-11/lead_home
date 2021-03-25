@@ -20,25 +20,21 @@
             画像
           </th>
           <td>
-            <div class="row">
-              <div class="col-xl-12">
-                <%= link_to @post.image.post_image1.url, "data-lightbox": @post.image.post_image1 do %>
-                  <%= image_tag @post.image.post_image1.url(:thumb200) %>
-                <% end %>
-                <%= link_to @post.image.post_image2.url, "data-lightbox": @post.image.post_image2 do %>
-                  <%= image_tag @post.image.post_image2.url(:thumb200) unless @post.image.post_image2.blank? %>
-                <% end %>
-                <%= link_to @post.image.post_image3.url, "data-lightbox": @post.image.post_image3 do %>
-                  <%= image_tag @post.image.post_image3.url(:thumb200) unless @post.image.post_image3.blank? %>
-                <% end %>
-                <%= link_to @post.image.post_image4.url, "data-lightbox": @post.image.post_image4 do %>
-                  <%= image_tag @post.image.post_image4.url(:thumb200) unless @post.image.post_image4.blank? %>
-                <% end %>
-                <%= link_to @post.image.post_image5.url, "data-lightbox": @post.image.post_image5 do %>
-                  <%= image_tag @post.image.post_image5.url(:thumb200) unless @post.image.post_image5.blank? %>
-                <% end %>
-              </div>
-            </div>
+            <%= link_to @post.image.post_image1.url, "data-lightbox": @post.image.post_image1 do %>
+              <%= image_tag @post.image.post_image1.url(:thumb200) %>
+            <% end %>
+            <%= link_to @post.image.post_image2.url, "data-lightbox": @post.image.post_image2 do %>
+              <%= image_tag @post.image.post_image2.url(:thumb200) unless @post.image.post_image2.blank? %>
+            <% end %>
+            <%= link_to @post.image.post_image3.url, "data-lightbox": @post.image.post_image3 do %>
+              <%= image_tag @post.image.post_image3.url(:thumb200) unless @post.image.post_image3.blank? %>
+            <% end %>
+            <%= link_to @post.image.post_image4.url, "data-lightbox": @post.image.post_image4 do %>
+              <%= image_tag @post.image.post_image4.url(:thumb200) unless @post.image.post_image4.blank? %>
+            <% end %>
+            <%= link_to @post.image.post_image5.url, "data-lightbox": @post.image.post_image5 do %>
+              <%= image_tag @post.image.post_image5.url(:thumb200) unless @post.image.post_image5.blank? %>
+            <% end %>
           </td>
         </tr>
         <tr>
