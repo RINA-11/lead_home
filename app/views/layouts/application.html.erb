@@ -31,27 +31,41 @@
         <div id="navbar" class="navbar-right collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li>
-              <%= link_to " 掲示板へ", posts_path, class: "nav-link fas fa-list-alt" %>
+              <%= link_to posts_path, class: "nav-link" do %>
+                <div class="fas fa-list-alt">掲示板へ</div>
+              <% end %>
             </li>
             <% if logged_in? %>
               <li>
-                <%= link_to "投稿する", new_post_path, class: "nav-link fas fa-edit" %>
+                <%= link_to new_post_path, class: "nav-link" do %>
+                  <div class="fas fa-edit">投稿する</div>
+                <% end %>
               </li>
               <li>
-                <%= link_to "クリップ一覧", clips_path, class: "nav-link fas fa-paperclip" %>
+                <%= link_to clips_path, class: "nav-link" do %>
+                  <div class="fas fa-paperclip">クリップ一覧</div>
+                <% end %>
               </li>
               <li>
-                <%= link_to "マイページ", user_path(current_user.id), class: "nav-link fas fa-user" %>
+                <%= link_to user_path(current_user.id), class: "nav-link" do %>
+                  <div class="fas fa-user">マイページ</div>
+                <% end %>
               </li>
               <li>
-                <%= link_to "ログアウト", session_path(current_user.id), method: :delete, class: "nav-link fas fa-sign-out-alt" %>
+                <%= link_to session_path(current_user.id), method: :delete, class: "nav-link" do %>
+                  <div class="fas fa-sign-out-alt">ログアウト</div>
+                <% end %>
               </li>
             <% else %>
               <li>
-                <%= link_to "ユーザー登録", new_user_path, class: "nav-link fas fa-user-plus" %>
+                <%= link_to  new_user_path, class: "nav-link" do %>
+                  <div class="fas fa-user-plus">ユーザー登録</div>
+                <% end %>
               </li>
               <li>
-                <%= link_to "ログイン", new_session_path, class: "nav-link fas fa-sign-in-alt" %>
+                <%= link_to new_session_path, class: "nav-link" do %>
+                  <div class="fas fa-sign-in-alt">ログイン</div>
+                <% end %>
               </li>
             <% end %>
           </ul>
@@ -59,7 +73,14 @@
       </div>
     </nav>
     <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>" role="alert"><%= value %></div>
+      <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+        <%= value %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="閉じる">
+          <span aria-hidden="true">
+            <i class="fas fa-times"></i>
+          </span>
+        </button>
+      </div>
     <% end %>
     <div class="container wrapper">
       <%= yield %>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   
-  before_action :master_all, only: [ :show ]
+  before_action :master_all, only: [ :show, :update ]
   
   def new
     @user = User.new
@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(current_user.id), success: "ユーザー情報を更新しました"
     else
+      @posts = Post.includes(:image).where(user_id: current_user.id).order(created_at: "desc").page(params[:page]).per(24)
       flash.now[:danger] = "ユーザー情報の更新に失敗しました"
       render :show
     end

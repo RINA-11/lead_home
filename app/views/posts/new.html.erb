@@ -1,190 +1,201 @@
 <div class="posts-new-wrapper">
-  <div class="container">
-    <% if @post.errors.any? %>
-      <div class="message">
-        <p>未入力があります</p>
-      </div>
-    <% end %>
-    
-    <%= form_with model: @post, local: true do |f| %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <table class="table">
-        <tbody>
-          <tr>
-            <th>
-              投稿の種類<span> ※</span>
-            </th>
-            <td>
-              <div class="form-check">
-                <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, { class: "radio-inline", checked: 1 }, required: true %>
-                <% if @post.errors.include?(:purpose_id) %>
-                  <p style="color: red;">
-                    <%= @post.errors.full_messages_for(:purpose_id).first %>
-                  </p>
-                <% end %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              画像<span> ※</span>
-            </th>
-            <td>
-              <%= f.fields_for :image, @post.build_image do |i| %>
-                <div class="form-group">
-                  <%= i.file_field :post_image1, required: true, id: :img_1 %>
-                  <%= i.hidden_field :post_image1_cache %>
-                  <div id="img-form_1"></div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title text-center">投稿内容</h4>
+    </div>
+    <div class="panel-body table-responsive">
+      <%= form_with model: @post, local: true, class: "form-horizontal" do |f| %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        
+        <%# 投稿の種類 %>
+        <div class="form-group">
+          <%= f.label :purpose_id, "投稿の種類", class: "control-label col-sm-3" %>
+          <div class="col-sm-7">
+            <%= f.collection_radio_buttons :purpose_id, @purposes, :id, :name, { checked: 1 }, required: true %>
+            <% if @post.errors.include?(:purpose_id) %>
+              <p class="error-message">
+                ※<%= @post.errors.full_messages_for(:purpose_id).first %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        
+        <%# 画像 %>
+        <div class="form-group">
+          <%= f.fields_for :image, @post.build_image do |i| %>
+            <%= i.label :post_image1, "画像", class: "control-label col-sm-3" %>
+            <div class="col-sm-7">
+              
+              <%= i.file_field :post_image1, id: "img_1", required: true %>
+              <%= i.hidden_field :post_image1_cache %>
+              <div id="img-form_1"></div>
+              
+              <%= i.file_field :post_image2, id: "img_2" %>
+              <%= i.hidden_field :post_image2_cache %>
+              <div id="img-form_2"></div>
+              
+              <%= i.file_field :post_image3, id: "img_3" %>
+              <%= i.hidden_field :post_image3_cache %>
+              <div id="img-form_3"></div>
                   
-                  <%= i.file_field :post_image2, id: :img_2 %>
-                  <%= i.hidden_field :post_image2_cache %>
-                  <div id="img-form_2"></div>
+              <%= i.file_field :post_image4, id: "img_4" %>
+              <%= i.hidden_field :post_image4_cache %>
+              <div id="img-form_4"></div>
                   
-                  <%= i.file_field :post_image3, id: :img_3 %>
-                  <%= i.hidden_field :post_image3_cache %>
-                  <div id="img-form_3"></div>
-                  
-                  <%= i.file_field :post_image4, id: :img_4 %>
-                  <%= i.hidden_field :post_image4_cache %>
-                  <div id="img-form_4"></div>
-                  
-                  <%= i.file_field :post_image5, id: :img_5 %>
-                  <%= i.hidden_field :post_image5_cache %>
-                  <div id="img-form_5"></div>
-                </div>
-              <% end %>
-              <% if @post.errors.include?(:image) %>
-                <p style="color: red;">
-                  <%= @post.errors.full_messages_for(:image).first %>
+              <%= i.file_field :post_image5, id: "img_5" %>
+              <%= i.hidden_field :post_image5_cache %>
+              <div id="img-form_5"></div>
+              
+              <% if @post.errors.include?(:post_image1) %>
+                <p class="error-message">
+                  ※<%= @post.errors.full_messages_for(:post_image1).first %>
                 </p>
               <% end %>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              動画
-            </th>
-            <td>
-              <div class="field">
-                <%= f.file_field :video, id: :video %>
-                <%= f.hidden_field :video_cache %>
-                <div id="video-form"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              日時<span> ※</span>
-            </th>
-            <td>
-              <div class="form-group">
-                <%= f.datetime_field :happened_at, required: true, class: "form-control", value: Time.current.strftime("%Y-%m-%dT00:00:00") %>
-                <% if @post.errors.include?(:happened_at) %>
-                  <p style="color: red;">
-                    <%= @post.errors.full_messages_for(:happened_at).first %>
-                  </p>
-                <% end %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              場所<span> ※</span>
-            </th>
-            <td>
-              <div class="form-group">
-                <%= f.label :prefecture_id, "都道府県 ※" %>
-                <%= f.collection_select :prefecture_id, @prefectures, :id, :name, { prompt: "選択してください" }, { class: "form-control", required: true } %>
-                <% if @post.errors.include?(:prefecture_id) %>
-                  <p style="color: red;">
-                    <%= @post.errors.full_messages_for(:prefecture_id).first %>
-                  </p>
-                <% end %>
-              </div>
-              <div class="form-group">
-                <%= f.label :city_id, "市区町村 ※" %>
-                <%= f.select :city_id, options_for_select(@cities.map { |c|[c[:name], c[:id], { "data-id" => c[:prefecture_id] }] }), { prompt: "選択してください" }, { class: "form-control", required: true, id: :city_id } %>
-                <% if @post.errors.include?(:city_id) %>
-                  <p style="color: red;">
-                    <%= @post.errors.full_messages_for(:city_id).first %>
-                  </p>
-                <% end %>
-              </div>
-              <div class="form-group">
-                <%= f.label :address_line, "その他" %>
-                <%= f.text_field :address_line, class:"form-control", value: "その他" %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              名前
-            </th>
-            <td>
-              <div class="form-group">
-                <%= f.text_field :pet_name, class:"form-control", value: "ポチ" %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              ペットカテゴリー<span> ※</span>
-            </th>
-            <td>
-              <div class="form-group">
-                <%= f.collection_select :pet_category_id, @pet_categories, :id, :name, { prompt: "選択してください", selected: 1 }, { class: "form-control", required: true } %>
-                <% if @post.errors.include?(:pet_category_id) %>
-                  <p style="color: red;">
-                    <%= @post.errors.full_messages_for(:pet_category_id).first %>
-                  </p>
-                <% end %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              品種
-            </th>
-            <td>
-              <div class="form-group">
-                <%= f.text_field :pet_breed, class:"form-control", value: "柴犬" %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              性別<span> ※</span>
-            </th>
-            <td>
-              <div class="form-check">
-                <%= f.collection_radio_buttons :pet_sex_id, @pet_sexes, :id, :name, { class: "form-check-input", checked: 1 }, required: true %>
-                <% if @post.errors.include?(:pet_sex_id) %>
-                  <p style="color: red;">
-                    <%= @post.errors.full_messages_for(:pet_sex_id).first %>
-                  </p>
-                <% end %>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th>
-              コメント<span> ※</span>
-            </th>
-            <td>
-              <div class="form-group">
-                <%= f.text_area :content, class: "form-control", required: true, value: "迷子です" %>
-                <% if @post.errors.include?(:content) %>
-                  <p style="color: red;">
-                    <%= @post.errors.full_messages_for(:content).first %>
-                  </p>
-                <% end %>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <%= f.submit "投稿" %>
-    <% end %>
-    
+            </div>
+            <% if @post.errors.include?(:image) %>
+              <p class="error-message">
+                ※<%= @post.errors.full_messages_for(:image).first %>
+              </p>
+            <% end %>
+          <% end %>
+        </div>
+        
+        <%# 動画 %>
+        <div class="form-group">
+          <%= f.label :video, "動画", class: "control-label col-sm-3" %>
+          <div class="col-sm-7">
+            <%= f.file_field :video, id: :video %>
+            <%= f.hidden_field :video_cache %>
+            <div id="video-form"></div>
+            <% if @post.errors.include?(:video) %>
+              <p class="error-message">
+                ※<%= @post.errors.full_messages_for(:video).first %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        
+        <%# 日時 %>
+        <div class="form-group">
+          <%= f.label :happened_at, "日時", class: "control-label col-sm-3" %>
+          <div class="col-sm-7">
+            <%= f.datetime_field :happened_at, required: true, class: "form-control", value: Time.current.strftime("%Y-%m-%dT00:00:00") %>
+            <% if @post.errors.include?(:happened_at) %>
+              <p class="error-message">
+                ※<%= @post.errors.full_messages_for(:happened_at).first %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        
+        <%# 都道府県 %>
+        <div class="form-group">
+          <%= f.label :prefecture_id, "都道府県", class: "control-label col-sm-3" %>
+          <div class="col-sm-7">
+            <%= f.collection_select :prefecture_id, @prefectures, :id, :name, { prompt: "選択してください" }, { class: "form-control", required: true } %>
+            <% if @post.errors.include?(:prefecture_id) %>
+              <p style="color: red;">
+                ※<%= @post.errors.full_messages_for(:prefecture_id).first %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        <%# 市区町村 %>
+        <div class="form-group">
+          <%= f.label :city_id, "市区町村", class: "control-label col-sm-3" %>
+          <div class="col-sm-7">
+            <%= f.select :city_id, options_for_select(@cities.map { |c|[c[:name], c[:id], { "data-id" => c[:prefecture_id] }] }), { prompt: "選択してください" }, { class: "form-control", required: true, id: :city_id } %>
+            <% if @post.errors.include?(:city_id) %>
+              <p style="color: red;">
+                ※<%= @post.errors.full_messages_for(:city_id).first %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        <%# その他 %>
+        <div class="form-group">
+          <%= f.label :address_line, "その他", class: "control-label col-sm-3" %>
+          <div class="col-sm-7">
+            <%= f.text_field :address_line, class:"form-control", value: "その他" %>
+            <small>50文字以内</small>
+            <% if @post.errors.include?(:address_line) %>
+              <p class="error-message">
+                ※<%= @post.errors.full_messages_for(:address_line).first %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        <%# 名前 %>
+        <div class="form-group">
+          <%= f.label :pet_name, "名前", class: "control-label col-sm-3" %>
+          <div class="col-sm-7">
+            <%= f.text_field :pet_name, class:"form-control", value: "ポチ" %>
+            <small>50文字以内</small>
+            <% if @post.errors.include?(:pet_name) %>
+              <p class="error-message">
+                ※<%= @post.errors.full_messages_for(:pet_name).first %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        
+        <%# ペットの種類 %>
+        <div class="form-group">
+          <%= f.label :pet_category_id, "ペットの種類", class: "control-label col-sm-3" %>
+          <div class="col-sm-7">
+            <%= f.collection_select :pet_category_id, @pet_categories, :id, :name, { prompt: "選択してください", selected: 1 }, { class: "form-control", required: true } %>
+            <% if @post.errors.include?(:pet_category_id) %>
+              <p class="error-message">
+                ※<%= @post.errors.full_messages_for(:pet_category_id).first %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        
+        <%# 品種 %>
+        <div class="form-group">
+          <%= f.label :pet_breed, "品種", class: "control-label col-sm-3" %>
+          <div class="col-sm-7">
+            <%= f.text_field :pet_breed, class:"form-control", value: "柴犬" %>
+            <small>50文字以内</small>
+            <% if @post.errors.include?(:pet_breed) %>
+              <p class="error-message">
+                ※<%= @post.errors.full_messages_for(:pet_breed).first %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        
+        <%# 性別 %>
+        <div class="form-group">
+          <%= f.label :pet_sex_id, "性別", class: "control-label col-sm-3" %>
+          <div class="col-sm-7">
+            <%= f.collection_radio_buttons :pet_sex_id, @pet_sexes, :id, :name, { checked: 1 }, required: true %>
+            <% if @post.errors.include?(:pet_sex_id) %>
+              <p class="error-message">
+                ※<%= @post.errors.full_messages_for(:pet_sex_id).first %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        
+        <%# コメント %>
+        <div class="form-group">
+          <%= f.label :content, "コメント", class: "control-label col-sm-3" %>
+          <div class="col-sm-7">
+            <%= f.text_area :content, class: "form-control", required: true, value: "迷子です" %>
+            <small>1000文字以内</small>
+            <% if @post.errors.include?(:content) %>
+              <p class="error-message">
+                ※<%= @post.errors.full_messages_for(:content).first %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <%= f.submit "投稿", class: "btn btn-default col-xs-offset-4 col-xs-4" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>

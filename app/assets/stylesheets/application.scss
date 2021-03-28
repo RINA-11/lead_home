@@ -1,34 +1,40 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 @import "users";
+@import "sessions";
 @import "posts";
+
 @import "clips";
 @import "home";
 @import "messages";
-@import "sessions";
 
-.navbar{
-  margin-bottom: 0px;
-}
-
-.alert {
-  width: 100%;
-  z-index: 1030;
-  text-align: center;
-  border-radius: 0px;
-}
-
-.wrapper{
-  margin-top: 10px;
-}
-
-
-.message {
-    color:#262626; 
-    background:#FFEBE8;
-    text-align: center;
-    border:2px solid #990000;
-    padding:12px; font-weight:850;
-    z-index: 10000;
+body {
+  white-space: nowrap;
+  
+  .navbar {
+    margin-bottom: 0px;
   }
+  
+  .navbar {
+    margin-bottom: 0px;
+  }
+  
+  .alert {
+    width: 100%;
+    z-index: 1030;
+    text-align: center;
+    border-radius: 0px;
+    
+    .fa-times {
+      margin-right: 16px;
+    }
+  }
+  
+  .wrapper {
+    margin-top: 50px;
+    
+    .error-message {
+      color: red;
+    }
+  }
+}

@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: "ユーザー名"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード確認"
+      post:
+        purpose_id: "投稿の種類"
+        pet_category_id: "ペットの種類"
+        prefecture_id: "都道府県"
+        city_id: "市区町村"
+        pet_sex_id: "性別"
+        pet_breed: "品種"
+        address_line: ""
+        happened_at: "日時"
+        content: "コメント"
+        video: "動画"
+        pet_name: "名前"
+      image:
+        post_image1: "画像１枚目"
+        post_image2: "画像２枚目"
+        post_image3: "画像３枚目"
+        post_image4: "画像４枚目"
+        post_image5: "画像５枚目"
+      message:
+        content: "メッセージ"

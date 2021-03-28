@@ -26,7 +26,7 @@ class Post < ApplicationRecord
   validates :city_id, presence: true
   validates :pet_sex_id, presence: true
   validates :pet_breed, length: { maximum: 50 }
-  validates :address_line, length: { maximum: 200 }
+  validates :address_line, length: { maximum: 50 }
   validates :happened_at, presence: true
   validates :content, presence: true,
                       length: { maximum: 1000 }
