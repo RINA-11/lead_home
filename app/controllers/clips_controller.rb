@@ -3,7 +3,7 @@ class ClipsController < ApplicationController
   before_action :master_all, only: [:index]
   
   def index
-    @clip_posts = current_user.clip_posts
+    @clip_posts = current_user.clip_posts.order(created_at: "desc").page(params[:page]).per(24)
   end
   
   def create

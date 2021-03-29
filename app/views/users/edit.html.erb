@@ -1,7 +1,7 @@
 <div class="users-edit-wrapper">
   <div class="panel panel-default">
     <div class="panel-heading">
-      <h4 class="panel-title text-center">ユーザー情報編集</h4>
+      <h1 class="panel-title text-center">ユーザー情報編集</h1>
     </div>
     <div class="panel-body table-responsive">
       <%= form_with model: @user, local: true, class: "form-horizontal" do |f| %>
@@ -9,7 +9,7 @@
           <%= f.label :name, "ユーザー名", class: "control-label col-sm-3" %>
           <div class="col-sm-7">
             <%= f.text_field :name, class: "form-control", placeholder: "ユーザー名", required: true %>
-            <small>30文字以内</small>
+            <small class="form-text text-muted">30文字以内</small>
             <% if @user.errors.include?(:name) %>
               <p class="error-message">
                 ※<%= @user.errors.full_messages_for(:name).first %>
@@ -32,7 +32,7 @@
           <%= f.label :password, "パスワード", class: "control-label col-sm-3" %>
           <div class="col-sm-7">
             <%= f.password_field :password, class: "form-control", placeholder: "パスワード", required: true %>
-            <small>6〜10文字(半角英数字)</small>
+            <small class="form-text text-muted">6〜10文字(半角英数字)</small>
             <% if @user.errors.include?(:password) %>
               <p class="error-message">
                 ※<%= @user.errors.full_messages_for(:password).first %>
@@ -44,7 +44,7 @@
           <%= f.label :password_confirmation, "パスワード確認", class: "control-label col-sm-3" %>
           <div class="col-sm-7">
             <%= f.password_field :password_confirmation, class: "form-control", placeholder: "パスワード確認", required: true %>
-            <small>もう一度入力してください</small>
+            <small class="form-text text-muted">もう一度入力してください</small>
             <% if @user.errors.include?(:password_confirmation) %>
               <p class="error-message">
                 ※<%= @user.errors.full_messages_for(:password_confirmation).first %>

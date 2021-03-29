@@ -13,16 +13,11 @@ ja:
         city_id: "市区町村"
         pet_sex_id: "性別"
         pet_breed: "品種"
-        address_line: ""
+        address_line: "その他"
         happened_at: "日時"
         content: "コメント"
         video: "動画"
         pet_name: "名前"
-      image:
-        post_image1: "画像１枚目"
-        post_image2: "画像２枚目"
-        post_image3: "画像３枚目"
-        post_image4: "画像４枚目"
-        post_image5: "画像５枚目"
+        image: "画像"
       message:
         content: "メッセージ"

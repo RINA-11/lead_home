@@ -3,7 +3,7 @@
     <div class="col-xs-offset-2 col-xs-8">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h4 class="panel-title text-center">ユーザー情報</h4>
+          <h1 class="panel-title text-center">ユーザー情報</h1>
         </div>
         <div class="panel-body table-responsive">
           <table class="table">
@@ -44,7 +44,7 @@
           <%= link_to post_path(id: post.id), class: "panel panel-default thumbnail" do %>
             <%= image_tag post.image.post_image1.url(:thumb200), class: "img-rounded" %>
             <div class="panel-heading">
-              <h4 class="panel-title text-center"><%= @purposes.find_by(id: post.purpose_id).name %></h4>
+              <h1 class="panel-title text-center"><%= @purposes.find_by(id: post.purpose_id).name %></h1>
             </div>
             <div class="panel-body table-responsive">
               <p class="panel-text">名前：<%= post.pet_name unless post.pet_name.blank? %></p>
