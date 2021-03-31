@@ -213,7 +213,7 @@
         <div class="form-group">
           <%= f.label :content, "コメント", class: "control-label col-sm-3 glyphicon-asterisk" %>
           <div class="col-sm-7">
-            <%= f.text_area :content, class: "form-control", required: true, placeholder: "迷子です", value: "迷子です" %>
+            <%= f.text_area :content, class: "form-control", rows: "10", required: true, placeholder: "迷子です", value: "迷子です" %>
             <small class="form-text text-muted">1000文字以内</small>
             <% if @post.errors.include?(:content) %>
               <p class="error-message">

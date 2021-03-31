@@ -1,7 +1,7 @@
 class Prefecture < ApplicationRecord
   
   has_many :cities
-  belongs_to :post
+  has_one :post
   
   validates :name, presence: true
   

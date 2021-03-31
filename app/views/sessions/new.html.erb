@@ -3,7 +3,7 @@
     <div class="panel-heading">
       <h1 class="panel-title text-center">ログイン</h1>
     </div>
-    <div class="panel-body table-responsive">
+    <div class="panel-body">
       <%= form_with scope: :session, url: sessions_path, local: true, class: "form-horizontal" do |f| %>
         <div class="form-group">
           <%= f.label :email, "メールアドレス", class: "control-label col-sm-3" %>

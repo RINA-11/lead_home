@@ -17,7 +17,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" id="top">
       <div class="container">
         <div class="navbar-header">
           <%= link_to "Lead Home", home_top_path, class: "navbar-brand" %>
@@ -85,5 +85,6 @@
     <div class="container wrapper">
       <%= yield %>
     </div>
+    <a class="far fa-caret-square-up" href="#top"></a>
   </body>
 </html>

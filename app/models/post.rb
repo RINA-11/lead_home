@@ -1,12 +1,12 @@
 class Post < ApplicationRecord
 
   belongs_to :user
-  has_one :purpose
-  has_one :pet_category
-  has_one :prefecture
-  has_one :city
-  has_one :pet_sex
-  has_one :purpose
+  belongs_to :purpose
+  belongs_to :pet_category
+  belongs_to :prefecture
+  belongs_to :city
+  belongs_to :pet_sex
+  belongs_to :purpose
   has_one :image, dependent: :destroy, inverse_of: :post
   has_many :clips, dependent: :destroy
   has_many :messages, dependent: :destroy

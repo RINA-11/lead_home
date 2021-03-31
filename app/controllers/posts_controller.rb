@@ -39,11 +39,6 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find_by(id: params[:id])
-    @purpose = Purpose.find_by(id: @post.purpose_id)
-    @prefecture = Prefecture.find_by(id: @post.prefecture_id)
-    @city = City.find_by(id: @post.city_id)
-    @pet_category = PetCategory.find_by(id: @post.pet_category_id)
-    @pet_sex = PetSex.find_by(id: @post.pet_sex_id)
     @message = Message.new
   end
   

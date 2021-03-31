@@ -30,6 +30,10 @@
         width: 50%;
         height: 50%;
       }
+      
+      textarea {
+        resize: vertical;
+      }
     }
   }
 }
@@ -69,6 +73,7 @@
         
       .panel-text {
         color: black;
+        white-space: nowrap;
       }
     }
       
@@ -79,6 +84,56 @@
   
   .paginate {
     text-align: center;
+  }
+}
+
+.posts-show-wrapper {
+  
+  table {
+    table-layout: fixed;
+    
+    th {
+      border: none;
+      width: 20%;
+    }
+      
+    td {
+      border: none;
+      width: 80%;
+      word-wrap: break-word;
+      
+      .video {
+        width: 60%;
+      }
+      
+      .address {
+        margin-bottom: 5px;
+      }
+    }
+  }
+  
+  .post-info-links {
+    text-align: center;
+      
+    .btn {
+      width: 30%;
+    }
+  }
+  
+  .message {
+    
+    textarea {
+      resize: vertical;
+    }
+    
+    .btn {
+    
+    }
+    
+    .message-show {
+      border: 1px solid black;
+      word-wrap: break-word;
+    }
   }
 }
 
@@ -113,6 +168,10 @@
       .video-preview {
         width: 50%;
         height: 50%;
+      }
+      
+      textarea {
+        resize: vertical;
       }
     }
   }

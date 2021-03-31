@@ -57,15 +57,15 @@
           <%= link_to post_path(id: post.id), class: "panel panel-default thumbnail" do %>
             <%= image_tag post.image.post_image1.url(:thumb200), class: "img-rounded" %>
             <div class="panel-heading">
-              <h1 class="panel-title text-center"><%= @purposes.find_by(id: post.purpose_id).name %></h1>
+              <h1 class="panel-title text-center"><%= post.purpose.name %></h1>
             </div>
             <div class="panel-body table-responsive">
               <p class="panel-text">名前：<%= post.pet_name unless post.pet_name.blank? %></p>
               <p class="panel-text">日付：<%= post.happened_at.strftime("%Y年%m月%d日") %></p>
-              <p class="panel-text">場所：<%= @prefectures.find_by(id: post.prefecture_id).name + @cities.find_by(id: post.city_id).name %></p>
-              <p class="panel-text">種類：<%= @pet_categories.find_by(id: post.pet_category_id).name %></p>
+              <p class="panel-text">場所：<%= post.prefecture.name + post.city.name %></p>
+              <p class="panel-text">種類：<%= post.pet_category.name %></p>
               <p class="panel-text">品種：<%= post.pet_breed unless post.pet_breed.blank? %></p>
-              <p class="panel-text">性別：<%= @pet_sexes.find_by(id: post.pet_sex_id).name %></p>
+              <p class="panel-text">性別：<%= post.pet_sex.name %></p>
             </div>
           <% end %>
         </div>
