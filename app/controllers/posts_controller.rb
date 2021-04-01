@@ -40,6 +40,14 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
     @message = Message.new
+    if @post.purpose_id == 1
+      @class = "danger"
+    elsif @post.purpose_id == 2
+      @class = "success"
+    elsif @post.purpose_id == 3
+      @class = "info"
+    end
+    @url = request.url
   end
   
   def edit

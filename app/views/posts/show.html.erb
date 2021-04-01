@@ -1,27 +1,79 @@
 <div class="posts-show-wrapper">
   <div class="post-detail row">
-    <div class="col-xs-12">
-      <div class="panel panel-default">
+    <div class="col-xs-offset-1 col-xs-10">
+      <div class="panel panel-<%= @class %>">
         <div class="panel-heading">
           <h1 class="panel-title text-center"><%= @post.purpose.name %></h1>
         </div>
         <div class="panel-body">
-          <div>
-            <%= link_to @post.image.post_image1.url, "data-lightbox": @post.image.post_image1 do %>
-              <%= image_tag @post.image.post_image1.url(:thumb200) %>
-            <% end %>
-            <%= link_to @post.image.post_image2.url, "data-lightbox": @post.image.post_image2 do %>
-              <%= image_tag @post.image.post_image2.url(:thumb200) unless @post.image.post_image2.blank? %>
-            <% end %>
-            <%= link_to @post.image.post_image3.url, "data-lightbox": @post.image.post_image3 do %>
-              <%= image_tag @post.image.post_image3.url(:thumb200) unless @post.image.post_image3.blank? %>
-            <% end %>
-            <%= link_to @post.image.post_image4.url, "data-lightbox": @post.image.post_image4 do %>
-              <%= image_tag @post.image.post_image4.url(:thumb200) unless @post.image.post_image4.blank? %>
-            <% end %>
-            <%= link_to @post.image.post_image5.url, "data-lightbox": @post.image.post_image5 do %>
-              <%= image_tag @post.image.post_image5.url(:thumb200) unless @post.image.post_image5.blank? %>
-            <% end %>
+          <div id="sampleCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner center-block" role="listbox">
+              <div class="item active">
+                <%= link_to @post.image.post_image1.url, "data-lightbox": "image-group" do %>
+                  <%= image_tag @post.image.post_image1.url(:thumb200), class: "img-responsive" %>
+                <% end %>
+              </div>
+              <% if @post.image.post_image2.present? %>
+                <div class="item">
+                  <%= link_to @post.image.post_image2.url, "data-lightbox": "image-group" do %>
+                    <%= image_tag @post.image.post_image2.url(:thumb200), class: "img-responsive" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <% if @post.image.post_image3.present? %>
+                <div class="item">
+                  <%= link_to @post.image.post_image3.url, "data-lightbox": "image-group" do %>
+                    <%= image_tag @post.image.post_image3.url(:thumb200), class: "img-responsive" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <% if @post.image.post_image4.present? %>
+                <div class="item">
+                  <%= link_to @post.image.post_image4.url, "data-lightbox": "image-group" do %>
+                    <%= image_tag @post.image.post_image4.url(:thumb200), class: "img-responsive" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <% if @post.image.post_image5.present? %>
+                <div class="item">
+                  <%= link_to @post.image.post_image5.url, "data-lightbox": "image-group"  do %>
+                    <%= image_tag @post.image.post_image5.url(:thumb200), class: "img-responsive" %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
+            
+            <div class="indicators">
+              <ol class="carousel-indicators center-block">
+                <% if @post.image.post_image2.present? %>
+                  <li data-target="#sampleCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#sampleCarousel" data-slide-to="1"></li>
+                <% end %>
+                <% if @post.image.post_image3.present? %>
+                  <li data-target="#sampleCarousel" data-slide-to="2"></li>
+                <% end %>
+                <% if @post.image.post_image4.present? %>
+                  <li data-target="#sampleCarousel" data-slide-to="3"></li>
+                <% end %>
+                <% if @post.image.post_image5.present? %>
+                  <li data-target="#sampleCarousel" data-slide-to="4"></li>
+                <% end %>
+              </ol>
+            </div>
+            
+            <div class="controls">
+              <% if @post.image.post_image2.present? %>
+                <a class="left carousel-control" href="#sampleCarousel" role="button" data-slide="prev">
+              		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+              		<span class="sr-only">前へ</span>
+              	</a>
+              	<a class="right carousel-control" href="#sampleCarousel" role="button" data-slide="next">
+              		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+              		<span class="sr-only">次へ</span>
+              	</a>
+              <% end %>
+            </div>
+            
           </div>
           <table class="table">
             <tbody>
@@ -69,15 +121,15 @@
           <%= link_to edit_post_path(@post), class: "btn btn-default" do %>
             <div class="fas fa-edit">編集</div>
           <% end %>
-          <%= link_to post_path(@post), method: :delete, class: "btn btn-default" do %>
+          <%= link_to post_path(@post), method: :delete, class: "btn btn-default", data: { confirm: "本当に削除しますか？" } do %>
             <div class="fas fa-trash-alt">削除</div>
           <% end %>
         </div>
       <% end %>
       <div class="sns-icon">
-        <a class="fab fa-line" href="https://line.me/R/msg/text/?#{request.url}"></a>
-        <a class="fab fa-twitter-square" href="https://twitter.com/share?text=拡散お願い致します。&url=#{request.url}&hashtags=迷子"></a>
-        <a class="fab fa-facebook-square" href="https://www.facebook.com/sharer.php?src=bm&u=#{request.url}"></a>
+        <a class="fab fa-line" href="https://line.me/R/msg/text/?<% @url %>" target="_brank"></a>
+        <a class="fab fa-twitter-square" href="https://twitter.com/share?text=拡散お願い致します。&url=<% @url %>&hashtags=迷子ペット" target="_brank"></a>
+        <a class="fab fa-facebook-square" href="https://www.facebook.com/sharer.php?src=bm&u=<% @url %>" target="_brank"></a>
       </div>
       <div>
         <% if !@post.clip_users.include?(current_user) %>
@@ -97,42 +149,44 @@
     </div>
     </div>
   </div>
-  <div class="message">
-    <div class="page-header">
-      <h2 class="text-center">メッセージ</h2>
-    </div>
-    <div class="message-create">
-      <%= form_with model: @message, local: true do |f| %>
-        <%= f.hidden_field :user_id, value: current_user.id %>
-        <%= f.hidden_field :post_id, value: @post.id %>
-        <div class="form-group">
-          <%= f.text_area :content, class: "form-control", rows: "5", required: true %>
-          <small class="form-text text-muted">1000文字以内</small>
-          <% if @message.errors.include?(:content) %>
-            <p class="error-message">
-              ※<%= @message.errors.full_messages_for(:content).first %>
-            </p>
-          <% end %>
-        </div>
-        <div class="form-group">
-          <%= f.submit "メッセージを投稿する", class: "btn btn-default col-xs-offset-4 col-xs-4" %>
-        </div>
-      <% end %>
-    </div>
-    <div class="message-index">
-      <% @post.messages.order(created_at: "desc").each do |message| %>
-        <div class="row">
-          <div class="message-show col-xs-offset-1 col-xs-10">
-            <p>投稿者：<%= message.user.name %></p>
-            <p><%= message.content %></p>
-              <% if current_user.id == message.user_id %>
-                <%= link_to message_path(id: message.id), method: :delete, class: "btn btn-default" do %>
-                  <div class="fas fa-trash-alt">削除</div>
-                <% end %>
+  <div class="message row">
+    <div class="col-xs-offset-1 col-xs-10">
+      <div class="page-header">
+        <h2 class="text-center">メッセージ</h2>
+      </div>
+      <div class="message-create">
+        <%= form_with model: @message, local: true do |f| %>
+          <%= f.hidden_field :user_id, value: current_user.id %>
+          <%= f.hidden_field :post_id, value: @post.id %>
+          <div class="form-group">
+            <%= f.text_area :content, class: "form-control", rows: "5", required: true %>
+            <small class="form-text text-muted">1000文字以内</small>
+            <% if @message.errors.include?(:content) %>
+              <p class="error-message">
+                ※<%= @message.errors.full_messages_for(:content).first %>
+              </p>
             <% end %>
           </div>
-        </div>
-      <% end %>
+          <div class="form-group">
+            <%= f.submit "メッセージを投稿する", class: "btn btn-default col-xs-offset-4 col-xs-4" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="message-index">
+        <% @post.messages.order(created_at: "desc").each do |message| %>
+          <div class="row">
+            <div class="message-show col-xs-offset-1 col-xs-10">
+              <p>投稿者：<%= message.user.name %></p>
+              <p><%= message.content %></p>
+                <% if current_user.id == message.user_id %>
+                  <%= link_to message_path(id: message.id), method: :delete, class: "btn btn-default", data: { confirm: "本当に削除しますか？" } do %>
+                    <div class="fas fa-trash-alt">削除</div>
+                  <% end %>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

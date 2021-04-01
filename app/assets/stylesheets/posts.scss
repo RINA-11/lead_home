@@ -44,6 +44,7 @@
     
     .panel-body {
       padding-top: 30px;
+      white-space: nowrap;
     
       .form-group {
         margin-bottom: 10px;
@@ -89,12 +90,49 @@
 
 .posts-show-wrapper {
   
+  .carousel {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+    .carousel-inner {
+      width: 300px;
+      height: 300px;
+      
+      .item {
+        width: 300px;
+      }
+    }
+  
+    .carousel-indicators {
+      position: static;
+      margin-top: 30px;
+      
+      li {
+        border-radius: 0px;
+        background-color: black;
+        width: 20px;
+        height: 5px;
+        
+      }
+    }
+    
+    .carousel-control {
+      color: black;
+    }
+  
+    .left, .right {
+      background-image: none;
+    }
+  }
+  
   table {
     table-layout: fixed;
+    vertical-align: middle;
     
     th {
       border: none;
       width: 20%;
+      text-align: center;
     }
       
     td {

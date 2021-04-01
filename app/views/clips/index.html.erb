@@ -4,9 +4,16 @@
   </div>
   <div class="row">
     <% @clip_posts.each do |post| %>
+      <% if post.purpose_id == 1 %>
+        <% panel_class = "danger" %>
+      <% elsif post.purpose_id == 2 %>
+          <% panel_class = "success" %>
+      <% elsif post.purpose_id == 3 %>
+        <% panel_class = "info" %>
+      <% end %>
       <div class="col-xs-6 col-sm-4 col-md-3">
-        <%= link_to post_path(id: post.id), class: "panel panel-default thumbnail" do %>
-          <%= image_tag post.image.post_image1.url(:thumb200), class: "img-rounded" %>
+        <%= link_to post_path(id: post.id), class: "panel panel-#{panel_class} thumbnail" do %>
+          <%= image_tag post.image.post_image1.url(:thumb200), class: "img-responsive img-rounded" %>
           <div class="panel-heading">
             <h1 class="panel-title text-center"><%= @purposes.find_by(id: post.purpose_id).name %></h1>
           </div>

@@ -26,7 +26,7 @@
             <%= link_to edit_user_path(id: current_user.id), class: "btn btn-default" do %>
               <div class="fas fa-user-edit">編集</div>
             <% end %>
-            <%= link_to user_path, method: :delete, class: "btn btn-default" do %>
+            <%= link_to user_path, method: :delete, class: "btn btn-default", data: { confirm: "本当に削除しますか？" } do %>
               <div class="fas fa-user-slash">削除</div>
             <% end %>
           </div>
@@ -40,9 +40,16 @@
     </div>
     <div class="row">
       <% @posts.each do |post| %>
+        <% if post.purpose_id == 1 %>
+          <% panel_class = "danger" %>
+        <% elsif post.purpose_id == 2 %>
+          <% panel_class = "success" %>
+        <% elsif post.purpose_id == 3 %>
+          <% panel_class = "info" %>
+        <% end %>
         <div class="col-xs-6 col-sm-4 col-md-3">
-          <%= link_to post_path(id: post.id), class: "panel panel-default thumbnail" do %>
-            <%= image_tag post.image.post_image1.url(:thumb200), class: "img-rounded" %>
+          <%= link_to post_path(id: post.id), class: "panel panel-#{panel_class} thumbnail" do %>
+            <%= image_tag post.image.post_image1.url(:thumb200), class: "img-responsive img-rounded" %>
             <div class="panel-heading">
               <h1 class="panel-title text-center"><%= post.purpose.name %></h1>
             </div>
