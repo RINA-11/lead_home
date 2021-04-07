@@ -24,6 +24,7 @@
             <p class="panel-text">種類：<%= @pet_categories.find_by(id: post.pet_category_id).name %></p>
             <p class="panel-text">品種：<%= post.pet_breed unless post.pet_breed.blank? %></p>
             <p class="panel-text">性別：<%= @pet_sexes.find_by(id: post.pet_sex_id).name %></p>
+            <p class="panel-text"><span class="far fa-comment-dots"></span>メッセージ：<%= post.messages.count %>件</p>
           </div>
         <% end %>
       </div>

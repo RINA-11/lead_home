@@ -4,7 +4,6 @@
 @import "users";
 @import "sessions";
 @import "posts";
-@import "messages";
 @import "clips";
 
 *, *:before, *:after {
@@ -12,42 +11,76 @@
   box-sizing: border-box
 }
 
-html {
-  scroll-behavior: smooth;
-  
+body {
+  background-color: ivory;
+      
   .navbar {
     margin-bottom: 0px;
-  }
+    border-radius: 0px;
+    background-color: whitesmoke;
+    border-bottom: tan solid 1px;
     
-  .navbar {
-    margin-bottom: 0px;
-  }
+    .navbar-brand {
+      padding: 0px;
+    }
     
+    .navbar-toggle {
+      border-color: #61463e;
+      
+      .icon-bar{
+        background-color: #61463e;
+      }
+    }
+    
+    .navbar-collapse {
+      border-color: tan;
+      
+      a {
+        color :#61463e;
+        
+        &:hover {
+          background-color: tan;
+        }
+      }
+    }
+  }
+      
   .alert {
     width: 100%;
     z-index: 1030;
     text-align: center;
     border-radius: 0px;
-      
+        
     .fa-times {
       margin-right: 16px;
     }
   }
-    
+      
   .wrapper {
     margin-top: 50px;
-      
+    margin-bottom: 50px;
+    padding: 50px 50px 30px 50px;
+    background-color: white;
+    border: whitesmoke solid 1px;
+    border-radius: 4px;
+        
     .error-message {
       color: red;
     }
   }
-    
+      
   .fa-caret-square-up {
     display: inline-block;
     position: fixed;
     text-decoration: none;
     font-size: 50px;
-    right:50px;
-    bottom:50px;
+    right:-50px;
+    bottom:30px;
+    color: #61463e;
+    opacity: 0.5;
+  }
+    
+  .fa-caret-square-up:hover {
+    opacity: 1.0;
   }
 }

@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   
   def edit
     @post = Post.find_by(id: params[:id])
-    @post_image = @post.build_image
+    #@post_image = @post.build_image
   end
   
   def update

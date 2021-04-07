@@ -1,38 +1,75 @@
 .posts-new-wrapper {
   
-  .panel-body {
-    padding-top: 50px;
+  .panel {
+    border: #61463e solid 1px;
     
-    .form-group {
-      margin-bottom: 30px;
+    .panel-heading {
+      background-color: tan;
+      border-bottom: #61463e solid 1px;
       
-      .control-label {
-        padding-top: 0px;
+      .panel-title {
+        font-size: 25px;
+        color: #61463e;
       }
+    }
+    
+    .panel-body {
+      padding-top: 50px;
       
-      .glyphicon-asterisk:before {
-        color: red;
-        font-size: 16px;
-        margin-right: 3px;
-      }
-      
-      .radio_button-label {
-        vertical-align: middle;
-        padding-right: 5px;
-      }
-      
-      .image-preview{
-        width: 50%;
-        height: 50%;
-      }
-      
-      .video-preview{
-        width: 50%;
-        height: 50%;
-      }
-      
-      textarea {
-        resize: vertical;
+      .form-group {
+        margin-bottom: 30px;
+        
+        .control-label {
+          padding-top: 0px;
+        }
+        
+        .glyphicon-asterisk:before {
+          color: red;
+          font-size: 16px;
+          margin-right: 3px;
+        }
+        
+        .radio_button-label {
+          vertical-align: middle;
+          padding-right: 5px;
+          padding-left: 2px;
+          letter-spacing: 2px;
+        }
+        
+        .image-preview{
+          width: 50%;
+          height: 50%;
+          max-width: 200px;
+          max-height: 200px;
+        }
+        
+        .video-preview{
+          width: 50%;
+          height: 50%;
+          max-width: 400px;
+          max-height: 225px;
+        }
+        
+        video {
+          width: 50%;
+          height: 50%;
+          max-width: 400px;
+          max-height: 225px;
+        }
+        
+        textarea {
+          resize: vertical;
+        }
+        
+        .btn {
+          color: white;
+          background-color: #61463e;
+          border-radius: 50px;
+          
+          &:hover {
+            opacity: 0.7;
+          }
+        }
       }
     }
   }
@@ -42,20 +79,46 @@
   
   .search-form{
     
-    .panel-body {
-      padding-top: 30px;
-      white-space: nowrap;
-    
-      .form-group {
-        margin-bottom: 10px;
+    .panel {
+      border: #61463e solid 1px;
       
-        .control-label {
-          padding-top: 0px;
-        }
+      .panel-heading {
+        background-color: tan;
+        border-bottom: #61463e solid 1px;
         
-        .radio_button-label {
-          vertical-align: middle;
-          padding-right: 5px;
+        .panel-title {
+          font-size: 25px;
+          color: #61463e;
+        }
+      }
+      
+      .panel-body {
+        padding-top: 30px;
+        white-space: nowrap;
+      
+        .form-group {
+          margin-bottom: 10px;
+        
+          .control-label {
+            padding-top: 0px;
+          }
+          
+          .radio_button-label {
+            vertical-align: middle;
+            padding-right: 5px;
+            padding-left: 2px;
+            letter-spacing: 2px;
+          }
+          
+          .btn {
+            color: white;
+            background-color: #61463e;
+            border-radius: 50px;
+            
+            &:hover {
+              opacity: 0.7;
+            }
+          }
         }
       }
     }
@@ -63,12 +126,26 @@
   
   .post-index {
     
+    .page-header {
+      border-bottom: lightgray solid 1px;
+      
+      h2 {
+        color: #61463e;
+      }
+    }
+    
+    .panel-danger, .panel-success, .panel-info {
+      border-color: lightgray;
+    }
+    
     .panel:hover {
       text-decoration: none;
+      border-color: #61463e;
       opacity: 0.7;
     }
       
     .panel-body {
+      padding-bottom: 0px;
       -ms-overflow-style: none;
       scrollbar-width: none;
         
@@ -85,131 +162,290 @@
   
   .paginate {
     text-align: center;
+    color: #61463e;
+    
+    .active {
+      
+      a {
+        background-color: #61463e;
+        border-color: #61463e;
+        color: white;
+        
+        &:hover {
+          background-color: #61463e;
+          border-color: #61463e;
+          color: white;
+        }
+      }
+    }
+    
+    a {
+      color: #61463e;
+      border-color: lightgray;
+      
+      &:hover {
+        color: #61463e;
+        background-color: tan;
+        border-color: tan;
+      }
+    }
   }
 }
 
 .posts-show-wrapper {
   
-  .carousel {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    
-    .carousel-inner {
-      width: 300px;
-      height: 300px;
+  .page-header {
+    border-bottom: lightgray solid 1px;
       
-      .item {
-        width: 300px;
-      }
-    }
-  
-    .carousel-indicators {
-      position: static;
-      margin-top: 30px;
-      
-      li {
-        border-radius: 0px;
-        background-color: black;
-        width: 20px;
-        height: 5px;
-        
-      }
-    }
-    
-    .carousel-control {
-      color: black;
-    }
-  
-    .left, .right {
-      background-image: none;
+    h2 {
+      color: #61463e;
     }
   }
   
-  table {
-    table-layout: fixed;
-    vertical-align: middle;
+  .panel {
+    border-color: lightgray;
     
-    th {
-      border: none;
-      width: 20%;
-      text-align: center;
+    .panel-title {
+      font-size: 25px;
     }
+    
+    .panel-body {
+      padding: 15px 15px 0px 15px;
       
-    td {
-      border: none;
-      width: 80%;
-      word-wrap: break-word;
+      .carousel {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        
+        .carousel-inner {
+          width: 300px;
+          height: 300px;
+          
+          .item {
+            width: 300px;
+          }
+        }
+    
+        .carousel-indicators {
+          position: static;
+          margin-top: 30px;
+          
+          li {
+            border-radius: 0px;
+            background-color: #61463e;
+            width: 20px;
+            height: 5px;
+          }
+          
+          .active {
+            background-color: tan;
+          }
+        }
       
-      .video {
-        width: 60%;
+        .carousel-control {
+          color: #61463e;
+          
+          &hover {
+            opacity: 1.0;
+          }
+        }
+      
+        .left, .right {
+          background-image: none;
+        }
+      }
+    
+      table {
+        table-layout: fixed;
+        
+        tr {
+          
+          th {
+            width: 30%;
+            text-align: center;
+            vertical-align: middle;
+            padding :20px;
+          }
+            
+          td {
+            width: 70%;
+            word-wrap: break-word;
+            vertical-align: middle;
+            padding :20px;
+              
+            .address {
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+    
+      .table {
+        margin-bottom: 0px;
       }
       
-      .address {
-        margin-bottom: 5px;
+      .panel-footer {
+        background-color: white;
+        padding: 30px 0px 20px 0px;
+      }
+      
+      .sns-icon {
+        display: inline-block;
+        
+        .fab {
+          font-size: 40px;
+          text-decoration: none;
+          margin-right: 5px;
+          
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      
+        .fa-line {
+          color: #00b900;
+        }
+        
+        .fa-twitter-square {
+          color: #1da1f2;
+        }
+        
+        .fa-facebook-square {
+          color: #3b5998;
+        }
       }
     }
   }
   
   .post-info-links {
     text-align: center;
-      
+    
     .btn {
-      width: 30%;
+      color: white;
+      background-color: #61463e;
+      border-radius: 50px;
+        
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+    
+    .col-xs-8 {
+      margin-bottom: 5px;
+    }
+      
+    .col-sm-4 {
+      margin-right: 5px;
     }
   }
   
   .message {
     
-    textarea {
-      resize: vertical;
-    }
-    
-    .btn {
-    
+    .message-create {
+      
+      textarea {
+        resize: vertical;
+      }
+      
+      .btn {
+        margin-bottom: 40px;
+        color: white;
+        background-color: #61463e;
+        border-radius: 50px;
+        
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
     
     .message-show {
       border: 1px solid black;
       word-wrap: break-word;
+      margin-bottom: 10px;
     }
   }
-}
+  
+    .clip-icon {
+      display: inline-block;
+      float: right;
+      
+      .fa-paperclip {
+        font-size: 40px;
+        border: 1px solid black;
+      }
+    }
+  }
 
 .posts-edit-wrapper {
   
-  .panel-body {
-    padding-top: 50px;
+  .panel {
+    border: #61463e solid 1px;
     
-    .form-group {
-      margin-bottom: 30px;
+    .panel-heading {
+      background-color: tan;
+      border-bottom: #61463e solid 1px;
       
-      .control-label {
-        padding-top: 0px;
+      .panel-title {
+        font-size: 25px;
+        color: #61463e;
       }
+    }
+    
+    .panel-body {
+      padding-top: 50px;
       
-      .glyphicon-asterisk:before {
-        color: red;
-        font-size: 16px;
-        margin-right: 3px;
-      }
-      
-      .radio_button-label {
-        vertical-align: middle;
-        padding-right: 5px;
-      }
-      
-      .image-preview {
-        width: 50%;
-        height: 50%;
-      }
-      
-      .video-preview {
-        width: 50%;
-        height: 50%;
-      }
-      
-      textarea {
-        resize: vertical;
+      .form-group {
+        margin-bottom: 30px;
+        
+        .control-label {
+          padding-top: 0px;
+        }
+        
+        .glyphicon-asterisk:before {
+          color: red;
+          font-size: 16px;
+          margin-right: 3px;
+        }
+        
+        .radio_button-label {
+          vertical-align: middle;
+          padding-right: 5px;
+        }
+        
+        .image-preview{
+          width: 50%;
+          height: 50%;
+          max-width: 200px;
+          max-height: 200px;
+        }
+        
+        .video-preview{
+          width: 50%;
+          height: 50%;
+          max-width: 400px;
+          max-height: 225px;
+        }
+        
+        video {
+          width: 50%;
+          height: 50%;
+          max-width: 400px;
+          max-height: 225px;
+        }
+        
+        textarea {
+          resize: vertical;
+        }
+        
+        .btn {
+          color: white;
+          background-color: #61463e;
+          border-radius: 50px;
+          
+          &:hover {
+            opacity: 0.7;
+          }
+        }
       }
     }
   }

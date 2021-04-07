@@ -1,7 +1,7 @@
 <div class="users-show-wrapper">
   <div class="user-info row">
     <div class="col-xs-offset-2 col-xs-8">
-      <div class="panel panel-default">
+      <div class="panel">
         <div class="panel-heading">
           <h1 class="panel-title text-center">ユーザー情報</h1>
         </div>
@@ -18,19 +18,19 @@
               </tr>
               <tr>
                 <th>パスワード</th>
-                <td><%= @user.password %></td>
+                <td>＊＊＊＊＊</td>
               </tr>
             </tbody>
           </table>
-          <div class="user-info-links">
-            <%= link_to edit_user_path(id: current_user.id), class: "btn btn-default" do %>
-              <div class="fas fa-user-edit">編集</div>
-            <% end %>
-            <%= link_to user_path, method: :delete, class: "btn btn-default", data: { confirm: "本当に削除しますか？" } do %>
-              <div class="fas fa-user-slash">削除</div>
-            <% end %>
-          </div>
         </div>
+      </div>
+      <div class="user-info-links">
+        <%= link_to edit_user_path(id: current_user.id), class: "btn col-xs-offset-2 col-xs-8 col-sm-offset-2 col-sm-4" do %>
+          <div class="fas fa-user-edit">編集</div>
+        <% end %>
+        <%= link_to user_path, method: :delete, class: "btn col-xs-offset-2 col-xs-8 col-sm-offset-0 col-sm-4", data: { confirm: "本当に削除しますか？" } do %>
+          <div class="fas fa-user-slash">削除</div>
+        <% end %>
       </div>
     </div>
   </div>
@@ -60,6 +60,7 @@
               <p class="panel-text">種類：<%= post.pet_category.name %></p>
               <p class="panel-text">品種：<%= post.pet_breed unless post.pet_breed.blank? %></p>
               <p class="panel-text">性別：<%= post.pet_sex.name %></p>
+              <p class="panel-text"><span class="far fa-comment-dots"></span>メッセージ：<%= post.messages.count %>件</p>
             </div>
           <% end %>
         </div>

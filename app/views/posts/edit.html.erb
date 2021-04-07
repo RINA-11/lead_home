@@ -1,5 +1,5 @@
 <div class="posts-edit-wrapper">
-  <div class="panel panel-default">
+  <div class="panel">
     <div class="panel-heading">
       <h4 class="panel-title text-center">投稿内容を編集する</h4>
     </div>
@@ -22,13 +22,14 @@
         </div>
         
         <%# 画像 %>
-        <%= f.fields_for :image, @post.build_image do |i| %>
+        <%= f.fields_for :image do |i| %>
           <div class="form-group">
             <%= i.label :post_image1, "画像１", class: "control-label col-sm-3 glyphicon-asterisk" %>
             <div class="col-sm-7">
-              <%= i.file_field :post_image1, id: "img_1", required: true %>
+              <%= i.file_field :post_image1, id: "img_1" %>
               <%= i.hidden_field :post_image1_cache %>
               <div id="img-form_1"></div>
+              <%= image_tag @post.image.post_image1.url(:thumb200), class: "img-responsive" if @post.image.post_image1? %>
               <% if @post.errors.include?(:image) %>
                 <p class="error-message">
                   ※<%= @post.errors.full_messages_for(:image).first %>
@@ -43,6 +44,7 @@
               <%= i.file_field :post_image2, id: "img_2" %>
               <%= i.hidden_field :post_image2_cache %>
               <div id="img-form_2"></div>
+              <%= image_tag @post.image.post_image2.url(:thumb200), class: "img-responsive" if @post.image.post_image2? %>
               <% if @post.errors.include?(:post_image2) %>
                 <p class="error-message">
                   ※<%= @post.errors.full_messages_for(:post_image2).first %>
@@ -57,6 +59,7 @@
               <%= i.file_field :post_image3, id: "img_3" %>
               <%= i.hidden_field :post_image3_cache %>
               <div id="img-form_3"></div>
+              <%= image_tag @post.image.post_image3.url(:thumb200), class: "img-responsive" if @post.image.post_image3? %>
               <% if @post.errors.include?(:post_image3) %>
                 <p class="error-message">
                   ※<%= @post.errors.full_messages_for(:post_image3).first %>
@@ -71,6 +74,7 @@
               <%= i.file_field :post_image4, id: "img_4" %>
               <%= i.hidden_field :post_image4_cache %>
               <div id="img-form_4"></div>
+              <%= image_tag @post.image.post_image4.url(:thumb200), class: "img-responsive" if @post.image.post_image4? %>
               <% if @post.errors.include?(:post_image4) %>
                 <p class="error-message">
                   ※<%= @post.errors.full_messages_for(:post_image4).first %>
@@ -85,6 +89,7 @@
               <%= i.file_field :post_image5, id: "img_5" %>
               <%= i.hidden_field :post_image5_cache %>
               <div id="img-form_5"></div>
+              <%= image_tag @post.image.post_image5.url(:thumb200), class: "img-responsive" if @post.image.post_image5? %>
               <% if @post.errors.include?(:post_image5) %>
                 <p class="error-message">
                   ※<%= @post.errors.full_messages_for(:post_image5).first %>
@@ -101,6 +106,7 @@
             <%= f.file_field :video, id: :video %>
             <%= f.hidden_field :video_cache %>
             <div id="video-form"></div>
+            <%= video_tag @post.video.url, class: "img-responsive" if @post.video? %>
             <% if @post.errors.include?(:video) %>
               <p class="error-message">
                 ※<%= @post.errors.full_messages_for(:video).first %>
@@ -222,9 +228,8 @@
             <% end %>
           </div>
         </div>
-        
         <div class="form-group">
-          <%= f.submit "保存", class: "btn btn-default col-xs-offset-4 col-xs-4" %>
+          <%= f.submit "保存", class: "btn col-xs-offset-4 col-xs-4" %>
         </div>
       <% end %>
     </div>

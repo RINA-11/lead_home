@@ -15,7 +15,7 @@ $(document).on("turbolinks:load", function() {
       $("#video-form").empty();
       $("#video-form").append($("<video>").attr({
         src: dataUri,
-        class: "video-preview",
+        class: "video-preview img-responsive",
         muted: "true",
         playsinline: "true",
         controls: "true",

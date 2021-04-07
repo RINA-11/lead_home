@@ -1,10 +1,40 @@
 .users-new-wrapper {
   
-  .panel-body {
-    padding-top: 50px;
+  .panel {
+    border: #61463e solid 1px;
     
-    .form-group {
-      margin-bottom: 30px;
+    .panel-heading {
+      background-color: tan;
+      border-bottom: #61463e solid 1px;
+      
+      .panel-title {
+        font-size: 25px;
+        color: #61463e;
+      }
+    }
+    
+    .panel-body {
+      padding-top: 20px;
+      
+      .form-group {
+        margin-top: 30px;
+        
+        .btn {
+          color: white;
+          background-color: #61463e;
+          border-radius: 50px;
+          
+          &:hover {
+            color: #61463e;
+            background-color: white;
+            border: #61463e solid 1px;
+          }
+          
+          &:focus {
+            outline: none;
+          }
+        }
+      }
     }
   }
 }
@@ -13,17 +43,31 @@
   
   .user-info {
     
-    .panel-body {
-      padding-top: 30px;
+    .panel {
+      border: #61463e solid 1px;
       
-      th {
-        border: none;
-        width: 40%;
+      .panel-heading {
+        background-color: tan;
+        border-bottom: #61463e solid 1px;
+        
+        .panel-title {
+          font-size: 25px;
+          color: #61463e;
+        }
       }
       
-      td {
-        border: none;
-        width: 60%;
+      .panel-body {
+        padding-top: 30px;
+        
+        th {
+          border: none;
+          width: 40%;
+        }
+        
+        td {
+          border: none;
+          width: 60%;
+        }
       }
     }
   }
@@ -32,46 +76,124 @@
     text-align: center;
     margin-top: 15px;
     margin-bottom: 10px;
-      
+    
     .btn {
-      width: 40%;
+        color: white;
+        background-color: #61463e;
+        border-radius: 50px;
+        
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+      
+    .col-xs-8 {
+      margin-bottom: 5px;
+    }
+      
+    .col-sm-4 {
+      margin-right: 5px;
     }
   }
   
   .user-posts {
     
-    .panel:hover {
-      text-decoration: none;
-      opacity: 0.7;
-    }
+    .page-header {
+      border-bottom: lightgray solid 1px;
       
-    .panel-body {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-        
-      .panel-text {
-        color: black;
-        white-space: nowrap;
+      h2 {
+        color: #61463e;
       }
     }
+    
+    .panel {
+      border-color: lightgray;
       
-    .panel-body::-webkit-scrollbar {
-      display:none;
+      &:hover {
+        text-decoration: none;
+        border-color: #61463e;
+        opacity: 0.7;
+      }
+      
+      .panel-body {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+          
+        .panel-text {
+          color: black;
+          white-space: nowrap;
+        }
+      }
+        
+      .panel-body::-webkit-scrollbar {
+        display:none;
+      }
     }
   }
   
   .paginate {
     text-align: center;
+    color: #61463e;
+    
+    .active {
+      
+      a {
+        background-color: #61463e;
+        border-color: #61463e;
+        color: white;
+        
+        &:hover {
+          background-color: #61463e;
+          border-color: #61463e;
+          color: white;
+        }
+      }
+    }
+    
+    a {
+      color: #61463e;
+      border-color: lightgray;
+      
+      &:hover {
+        color: #61463e;
+        background-color: tan;
+        border-color: tan;
+      }
+    }
   }
 }
 
 .users-edit-wrapper {
   
-  .panel-body {
-    padding-top: 50px;
+  .panel {
+    border: #61463e solid 1px;
     
-    .form-group {
-      margin-bottom: 30px;
+    .panel-heading {
+      background-color: tan;
+      border-bottom: #61463e solid 1px;
+      
+      .panel-title {
+        font-size: 25px;
+        color: #61463e;
+      }
+    }
+    
+    .panel-body {
+      padding-top: 20px;
+      
+      .form-group {
+        margin-top: 30px;
+        
+        .btn {
+          color: white;
+          background-color: #61463e;
+          border-radius: 50px;
+          
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      }
     }
   }
 }

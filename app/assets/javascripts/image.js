@@ -15,7 +15,7 @@ $(document).on("turbolinks:load", function() {
       $("#img-form_1").empty();
       $("#img-form_1").append($("<img>").attr({
         src: dataUri,
-        class: "image-preview",
+        class: "image-preview img-responsive",
         title: file.name
       }));
     }
@@ -35,7 +35,7 @@ $(document).on("turbolinks:load", function() {
       $("#img-form_2").empty();
       $("#img-form_2").append($("<img>").attr({
         src: dataUri,
-        class: "image-preview",
+        class: "image-preview img-responsive",
         title: file.name
       }));
     }
@@ -54,7 +54,7 @@ $(document).on("turbolinks:load", function() {
       $("#img-form_3").empty();
       $("#img-form_3").append($("<img>").attr({
         src: dataUri,
-        class: "image-preview",
+        class: "image-preview img-responsive",
         title: file.name
       }));
     }
@@ -73,7 +73,7 @@ $(document).on("turbolinks:load", function() {
       $("#img-form_4").empty();
       $("#img-form_4").append($("<img>").attr({
         src: dataUri,
-        class: "image-preview",
+        class: "image-preview img-responsive",
         title: file.name
       }));
     }
@@ -92,7 +92,7 @@ $(document).on("turbolinks:load", function() {
       $("#img-form_5").empty();
       $("#img-form_5").append($("<img>").attr({
         src: dataUri,
-        class: "image-preview",
+        class: "image-preview img-responsive",
         title: file.name
       }));
     }
