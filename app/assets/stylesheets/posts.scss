@@ -64,10 +64,22 @@
         .btn {
           color: white;
           background-color: #61463e;
-          border-radius: 50px;
+          box-shadow: 2px 2px 4px black;
           
           &:hover {
-            opacity: 0.7;
+            color: #61463e;
+            background-color: white;
+            border: #61463e solid 1px;
+          }
+          
+          &:active {
+            box-shadow: none;
+            position: relative;
+            top: 4px;
+          }
+          
+          &:focus {
+            outline: none;
           }
         }
       }
@@ -113,11 +125,31 @@
           .btn {
             color: white;
             background-color: #61463e;
-            border-radius: 50px;
+            box-shadow: 2px 2px 4px black;
             
             &:hover {
-              opacity: 0.7;
+              color: #61463e;
+              background-color: white;
+              border: #61463e solid 1px;
             }
+            
+            &:active {
+              box-shadow: none;
+              position: relative;
+              top: 4px;
+            }
+            
+            &:focus {
+              outline: none;
+            }
+          }
+          
+          .col-xs-4 {
+            margin-bottom: 5px;
+          }
+          
+          .col-sm-3 {
+            margin-right: 5px;
           }
         }
       }
@@ -134,15 +166,15 @@
       }
     }
     
-    .panel-danger, .panel-success, .panel-info {
+    .panel {
       border-color: lightgray;
-    }
+      box-shadow: 3px 3px 6px rgba(0,0,0,0.5);
     
-    .panel:hover {
-      text-decoration: none;
-      border-color: #61463e;
-      opacity: 0.7;
-    }
+      &:hover {
+        text-decoration: none;
+        border-color: #61463e;
+        opacity: 0.7;
+      }
       
     .panel-body {
       padding-bottom: 0px;
@@ -159,34 +191,39 @@
       display:none;
     }
   }
+}
   
   .paginate {
     text-align: center;
     color: #61463e;
     
-    .active {
+    .pagination {
+      box-shadow: 3px 3px 6px rgba(0,0,0,0.5);
       
-      a {
-        background-color: #61463e;
-        border-color: #61463e;
-        color: white;
-        
-        &:hover {
+      .active {
+      
+        a {
           background-color: #61463e;
           border-color: #61463e;
           color: white;
+          
+          &:hover {
+            background-color: #61463e;
+            border-color: #61463e;
+            color: white;
+          }
         }
       }
-    }
-    
-    a {
-      color: #61463e;
-      border-color: lightgray;
       
-      &:hover {
+      a {
         color: #61463e;
-        background-color: tan;
-        border-color: tan;
+        border-color: lightgray;
+        
+        &:hover {
+          color: #61463e;
+          background-color: tan;
+          border-color: tan;
+        }
       }
     }
   }
@@ -285,7 +322,18 @@
       
       .panel-footer {
         background-color: white;
-        padding: 30px 0px 20px 0px;
+      }
+      
+      .clip-icon {
+        font-size: 40px;
+        
+        .clip-lightgray {
+          color: lightgray;
+        }
+        
+        .clip-tan {
+          color: tan;
+        }
       }
       
       .sns-icon {
@@ -322,19 +370,27 @@
     .btn {
       color: white;
       background-color: #61463e;
-      border-radius: 50px;
-        
+      box-shadow: 2px 2px 4px black;
+          
       &:hover {
-        opacity: 0.7;
+        color: #61463e;
+        background-color: white;
+        border: #61463e solid 1px;
+      }
+          
+      &:active {
+        box-shadow: none;
+        position: relative;
+        top: 4px;
       }
     }
     
     .col-xs-8 {
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
       
     .col-sm-4 {
-      margin-right: 5px;
+      margin-right: 10px;
     }
   }
   
@@ -347,34 +403,41 @@
       }
       
       .btn {
-        margin-bottom: 40px;
-        color: white;
-        background-color: #61463e;
-        border-radius: 50px;
-        
-        &:hover {
-          opacity: 0.7;
+          color: white;
+          background-color: #61463e;
+          box-shadow: 2px 2px 4px black;
+          margin-bottom: 20px;
+          
+          &:hover {
+            color: #61463e;
+            background-color: white;
+            border: #61463e solid 1px;
+          }
+          
+          &:active {
+            box-shadow: none;
+            position: relative;
+            top: 4px;
+          }
+          
+          &:focus {
+            outline: none;
+          }
         }
-      }
     }
     
     .message-show {
-      border: 1px solid black;
+      border: 1px solid lightgray;
       word-wrap: break-word;
       margin-bottom: 10px;
-    }
-  }
-  
-    .clip-icon {
-      display: inline-block;
-      float: right;
+      padding: 10px;
       
-      .fa-paperclip {
-        font-size: 40px;
-        border: 1px solid black;
+      .message-poster {
+        margin-bottom : 2px;
       }
     }
   }
+}
 
 .posts-edit-wrapper {
   
@@ -440,10 +503,22 @@
         .btn {
           color: white;
           background-color: #61463e;
-          border-radius: 50px;
+          box-shadow: 2px 2px 4px black;
           
           &:hover {
-            opacity: 0.7;
+            color: #61463e;
+            background-color: white;
+            border: #61463e solid 1px;
+          }
+          
+          &:active {
+            box-shadow: none;
+            position: relative;
+            top: 4px;
+          }
+          
+          &:focus {
+            outline: none;
           }
         }
       }

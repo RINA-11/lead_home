@@ -22,10 +22,22 @@
         .btn {
           color: white;
           background-color: #61463e;
-          border-radius: 50px;
+          box-shadow: 2px 2px 4px black;
           
           &:hover {
-            opacity: 0.7;
+            color: #61463e;
+            background-color: white;
+            border: #61463e solid 1px;
+          }
+          
+          &:active {
+            box-shadow: none;
+            position: relative;
+            top: 4px;
+          }
+          
+          &:focus {
+            outline: none;
           }
         }
       }

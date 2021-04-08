@@ -26,10 +26,10 @@
       </div>
       <div class="user-info-links">
         <%= link_to edit_user_path(id: current_user.id), class: "btn col-xs-offset-2 col-xs-8 col-sm-offset-2 col-sm-4" do %>
-          <div class="fas fa-user-edit">編集</div>
+          <div class="fas fa-user-edit"> 編集</div>
         <% end %>
-        <%= link_to user_path, method: :delete, class: "btn col-xs-offset-2 col-xs-8 col-sm-offset-0 col-sm-4", data: { confirm: "本当に削除しますか？" } do %>
-          <div class="fas fa-user-slash">削除</div>
+        <%= link_to user_path, method: :delete, class: "btn col-xs-offset-2 col-xs-8 col-sm-offset-0 col-sm-4", data: { confirm: "本当に退会しますか？" } do %>
+          <div class="fas fa-user-slash"> 退会</div>
         <% end %>
       </div>
     </div>

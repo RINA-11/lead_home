@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   
   before_action :master_all, only: [ :new, :create, :edit, :index ]
+  before_action :authenticate_user, only: [:new, :create, :edit, :update, :destroy]
   
   def new
     @post = Post.new

@@ -1,6 +1,7 @@
 class ClipsController < ApplicationController
   
   before_action :master_all, only: [:index]
+  before_action :authenticate_user, only: [:index, :create, :destroy]
   
   def index
     @clip_posts = current_user.clip_posts.order(created_at: "desc").page(params[:page]).per(24)
