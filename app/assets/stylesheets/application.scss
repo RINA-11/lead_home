@@ -23,6 +23,11 @@ body {
     
     .navbar-brand {
       padding: 0px;
+      
+      img {
+        width: auto;
+        height: 50px;
+      }
     }
     
     .navbar-toggle {
@@ -34,10 +39,11 @@ body {
     }
     
     .navbar-collapse {
-      border-color: tan;
+      border-color: #61463e;
       
       a {
         color :#61463e;
+        font-weight: 900;
         
         &:hover {
           background-color: tan;

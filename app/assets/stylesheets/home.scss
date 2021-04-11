@@ -1,0 +1,52 @@
+.home-top-wrapper {
+  position: relative;
+  top: -50px;
+  
+  .jumbotron {
+    background-image: url("man-3687274_640.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-color: rgba(255,255,255,0.6);
+    background-blend-mode: lighten;
+    height: 300px;
+    border-radius: 0px;
+    outline: dashed 2px white;
+    outline-offset: -10px;
+    
+    img {
+      margin: auto;
+      object-fit: cover; 
+    }
+    
+    p {
+      color: #61463e;
+    }
+  }
+  
+  .btn {
+    color: white;
+    background-color: #61463e;
+    box-shadow: 2px 2px 4px black;
+    
+    &:hover {
+      color: #61463e;
+      background-color: white;
+      border: #61463e solid 1px;
+    }
+          
+    &:active {
+      box-shadow: none;
+      position: relative;
+      top: 4px;
+    }
+  }
+  
+  .col-xs-8 {
+    margin-bottom: 10px;
+  }
+  
+  .col-sm-4 {
+    margin-right: 10px;
+  }
+}

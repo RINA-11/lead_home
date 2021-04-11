@@ -1,0 +1,12 @@
+<div class="home-top-wrapper">
+  <div class="jumbotron text-center">
+    <%= image_tag "main-logo.png", class: "img-responsive" %>
+    <p>〜迷子のペットを元のお家に〜</p>
+  </div>
+  <%= link_to "掲示板", posts_path, class: "btn btn-lg col-xs-offset-2 col-xs-8 col-sm-offset-2 col-sm-4" %>
+  <% if logged_in? %>
+    <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-lg col-xs-offset-2 col-xs-8 col-sm-offset-0 col-sm-4" %>
+  <% else %>
+    <%= link_to "ユーザー登録", new_user_path, class: "btn btn-lg col-xs-offset-2 col-xs-8 col-sm-offset-0 col-sm-4" %>
+  <% end %>
+</div>

@@ -1,4 +1,5 @@
 <div class="posts-show-wrapper">
+  <%# 投稿詳細 %>
   <div class="post-detail row">
     <div class="col-xs-offset-1 col-xs-10">
       <div class="page-header">
@@ -118,11 +119,11 @@
             <div class="clip-icon text-center">
               <% if !@post.clip_users.include?(current_user) %>
                 <%= link_to clips_path(post_id: @post.id), method: :post do %>
-                  <div class="fas fa-paperclip clip-lightgray"></div>
+                  <div class="fas fa-paperclip clip-lightgray" id="unclip"></div>
                 <% end %>
               <% else %>
                 <%= link_to clip_path(post_id: @post.id), method: :delete do %>
-                  <div class="fas fa-paperclip clip-tan"></div>
+                  <div class="fas fa-paperclip clip-tan" id="clip"></div>
                 <% end %>
               <% end %>
             </div>
@@ -148,6 +149,7 @@
       <% end %>
     </div>
   </div>
+  <%# メッセージ %>
   <div class="message row">
     <div class="col-xs-offset-2 col-xs-8">
       <div class="page-header">
@@ -171,6 +173,7 @@
           </div>
         <% end %>
       </div>
+      <%# メッセージ一覧 %>
       <div class="message-index">
         <% @post.messages.order(created_at: "desc").each do |message| %>
           <div class="message-show">

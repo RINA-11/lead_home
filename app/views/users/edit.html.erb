@@ -5,6 +5,7 @@
     </div>
     <div class="panel-body table-responsive">
       <%= form_with model: @user, local: true, class: "form-horizontal" do |f| %>
+        <%# ユーザー名 %>
         <div class="form-group">
           <%= f.label :name, "ユーザー名", class: "control-label col-sm-3" %>
           <div class="col-sm-7">
@@ -17,6 +18,7 @@
             <% end %>
           </div>
         </div>
+        <%# メールアドレス %>
         <div class="form-group">
           <%= f.label :email, "メールアドレス", class: "control-label col-sm-3" %>
           <div class="col-sm-7">
@@ -28,6 +30,7 @@
             <% end %>
           </div>
         </div>
+        <%# パスワード %>
         <div class="form-group">
           <%= f.label :password, "パスワード", class: "control-label col-sm-3" %>
           <div class="col-sm-7">
@@ -40,6 +43,7 @@
             <% end %>
           </div>
         </div>
+        <%# パスワード確認 %>
         <div class="form-group">
           <%= f.label :password_confirmation, "パスワード確認", class: "control-label col-sm-3" %>
           <div class="col-sm-7">
